@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder
             EstadosSeeder::class,
             ContratosSeeder::class,
             LicitacionesSeeder::class,
-            OrdenescomprasSeeder::class
+            OrdenescomprasSeeder::class,
+            RolesAndPermissionsSeeder::class
          
 
             

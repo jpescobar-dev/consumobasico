@@ -31,8 +31,6 @@ var App = function() {
         }
     };
 
-    // Default Enabled
-
     var toggleFunction = {
         sidebar: function() {
             $('.sidebarCollapse').on('click', function (sidebar) {
@@ -45,9 +43,7 @@ var App = function() {
         },
         overlay: function() {
             $('#dismiss, .overlay').on('click', function () {
-                // hide sidebar
                 $(Selector.mainContainer).removeClass('topbar-closed');
-                // hide overlay
                 $('.overlay').removeClass('show');
                 $('html,body').removeClass('sidebar-noneoverflow');
             });
@@ -57,14 +53,13 @@ var App = function() {
             ps.destroy();
         },
         search: function() {
-            $(Selector.searchFull).click(function(event) {
+            $(Selector.searchFull).on('click', function(event) {
                $(this).parents('.search-animated').find('.search-full').addClass(ToggleClasses.inputFocused);
                $(this).parents('.search-animated').addClass('show-search');
                $(Selector.overlay.search).addClass('show');
-               $(Selector.overlay.search).addClass('show');
             });
 
-            $(Selector.overlay.search).click(function(event) {
+            $(Selector.overlay.search).on('click', function(event) {
                $(this).removeClass('show');
                $(Selector.searchFull).parents('.search-animated').find('.search-full').removeClass(ToggleClasses.inputFocused);
                $(Selector.searchFull).parents('.search-animated').removeClass('show-search');
@@ -92,10 +87,10 @@ var App = function() {
             });
         },
         preventAccordionOnClick: function() {
-            $('.menu > a[data-toggle="collapse"], .menu.single-menu  a[data-toggle="collapse"]').click(function(e){
+            $('.menu > a[data-toggle="collapse"], .menu.single-menu  a[data-toggle="collapse"]').on('click', function(e){
                 getWindowWidth = window.innerWidth;
                 if (getWindowWidth > 991) {
-                    e.preventDefault(); // to stop the page jump to the anchor target.
+                    e.preventDefault();
                     e.stopPropagation();
                 }
             })
@@ -121,20 +116,22 @@ var App = function() {
             });
         },
         default: function() {
-            $(document).scroll(function(event) {
+            $(document).on('scroll', function(event) {
+                var elementMainContent = $('.main-content').first();
+                var sideNav = $('.sidenav').first();
 
-              var elementMainContent = $('.main-content');
-              var elementNavbar = $( '.topbar-nav');
-              var sideNav = $('.sidenav');
-              var elementOffset = elementMainContent.offset().top;
-              var windowScroll = $(window).scrollTop();
-              // Check if window scroll > or == element offset?
-                if (windowScroll >= elementOffset) {
-                    sideNav.css('top', '42px');
-                } else if (windowScroll < elementOffset) {
-                    sideNav.css('top', '147px');
+                if (!elementMainContent.length || !sideNav.length || typeof elementMainContent.offset() === 'undefined') {
+                    return;
                 }
 
+                var elementOffset = elementMainContent.offset().top;
+                var windowScroll = $(window).scrollTop();
+
+                if (windowScroll >= elementOffset) {
+                    sideNav.css('top', '42px');
+                } else {
+                    sideNav.css('top', '147px');
+                }
             });
         },
         languageDropdown: function() {
@@ -192,15 +189,10 @@ var App = function() {
 
     return {
         init: function() {
-            
-            // Sidebar fn
             toggleFunction.sidebar();
-            // Overlay fn
             toggleFunction.overlay();
-            // Desktop Resoltion fn
             _desktopResolution.onRefresh();
             _desktopResolution.onResize();
-            // Mobile Resoltion fn
             _mobileResolution.onRefresh();
             _mobileResolution.onResize();
 
@@ -211,5 +203,4 @@ var App = function() {
             inBuiltfunctionality.languageDropdown();
         },
     }
-
 }();

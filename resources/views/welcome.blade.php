@@ -285,7 +285,7 @@
     <script src="{{asset('plugins/table/datatable/datatables.js')}}"></script>
 
     <script src="{{asset('plugins/apex/apexcharts.min.js')}}"></script>
-    <script src="{{asset('assets/js/dashboard/dash_2.js')}}"></script>
+    {{-- <script src="{{asset('assets/js/dashboard/dash_2.js')}}"></script> --}}
     
 
 <script>        

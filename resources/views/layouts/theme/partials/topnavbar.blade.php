@@ -414,7 +414,14 @@
                              <a href="{{ route('estados.index') }}">Estados</a>
                         </li>
                         <li>
-                            <a href="#">otros</a>
+                            <a href="{{ route('users.index')}}">Usuarios</a>
+                        </li>
+                        <li>
+                            <a href="#">Roles</a>
+                        </li>
+                       
+                        <li>
+                            <a href="#">Permisos</a>
                         </li>
                     
                 </li>

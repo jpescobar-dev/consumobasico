@@ -19,14 +19,29 @@ use App\Http\Controllers\ClienteMedidorController;
 use App\Http\Controllers\DetalledteController;
 use App\Http\Controllers\CdpController;
 use App\Http\Controllers\OrdenCompraController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\RoleController;
 
-// ***** livewire  ******//
-use App\Http\Livewire\Admin\Users;
+use App\Http\Controllers\ExcelPreviewController;
 
 
-Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('/admin/usuarios', Users::class);
-});
+
+
+
+
+Route::resource('users', UserController::class)->names('users');
+
+// Route::get('/admin', function () {
+//     return 'Panel de admin';
+// })->middleware('role:admin');
+
+Route::resource('roles', RoleController::class)->middleware(['auth', 'role:admin']);
+
+
+Route::get('/usuarios', [UserController::class, 'index'])->middleware('permission:users.index');
+
+Route::get('/admin', fn() => 'Panel Admin')->middleware('role:admin');
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -114,6 +129,22 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 });
 
 Route::middleware(['auth', 'role:admin'])->get('/admin/roles-permisos', \App\Http\Livewire\Admin\RolesPermisos::class)->name('admin.roles-permisos');
+
+
+
+
+
+
+
+
+Route::get('/importar-excel', [ExcelPreviewController::class, 'showForm'])->name('excel.form');
+Route::post('/importar-excel', [ExcelPreviewController::class, 'import'])->name('excel.import');
+
+
+
+
+
+
 
 
 

@@ -13,10 +13,12 @@ class Roles extends Component
     public $selectedRole = null;
     public $rolePermissions = [];
 
+
     public function mount()
     {
         $this->loadData();
     }
+
 
     public function loadData()
     {
@@ -37,8 +39,12 @@ class Roles extends Component
         $this->loadData();
     }
 
+    public $pageTitle = 'Gestión de Roles';
+    public $componentName = 'Roles';
+
     public function render()
     {
-        return view('livewire.admin.roles');
+        return view('livewire.admin.roles')
+            ->layout('layouts.theme.app');
     }
 }

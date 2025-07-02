@@ -8,6 +8,7 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Hash;
 
+
 class RolesAndAdminSeeder extends Seeder
 {
     public function run(): void
