@@ -11,6 +11,10 @@
     </div>
 
     <div class="form-group mb-3">
+        <label class="fw-bold">Nombre:</label>
+        <div>{{ $catalogo->nombre }}</div>
+    </div>
+    <div class="form-group mb-3">
         <label class="fw-bold">Descripción:</label>
         <div>{{ $catalogo->descripcion }}</div>
     </div>
@@ -28,7 +32,7 @@
     </div>
 
     <div class="form-group text-end mt-4">
-        <a href="{{ route('catalogos.index') }}" class="btn btn-secondary btn-sm">Volver al listado</a>
+        <a href="{{ route('catalogos.index') }}" class="btn btn-secondary btn-sm">Volver</a>
         <a href="{{ route('catalogos.edit', $catalogo) }}" class="btn btn-warning btn-sm">Editar</a>
     </div>
 </div>

@@ -10,6 +10,8 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\CatalogoController;
 use App\Http\Controllers\ConsultaController;
+use App\Http\Controllers\AsignacionController;
+use App\Http\Controllers\AsignacionFlujoController;
 use App\Http\Controllers\EstadoController;
 use App\Http\Controllers\LicitacionController;
 use App\Http\Controllers\ProyectoController;
@@ -23,10 +25,6 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
 
 use App\Http\Controllers\ExcelPreviewController;
-
-
-
-
 
 
 Route::resource('users', UserController::class)->names('users');
@@ -53,6 +51,15 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
+Route::get('/dashElectricidad', [DashboardController::class, 'dashElectricidad'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashElectricidad');
+
+Route::get('/dashAguaPotable', [DashboardController::class, 'dashAguaPotable'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashAguaPotable');
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -74,18 +81,13 @@ Route::get('/ordenesdecompra', function () {
     return view('purchase_orders.index');
 });
 
-
-
 Route::get('/api-oc', function () {
     return view('apis.api-ordenescompras');
 })->name('api-ordenescompras');
 
-
 Route::get('/api-licitacion', function () {
     return view('apis.api-licitaciones');
 })->name('api-licitaciones');
-
-
 
 // Rutas de autenticación
 Auth::routes();
@@ -95,6 +97,7 @@ Route::resource('cfinancieros', CfinancieroController::class)->names('cfinancier
 
 Route::resource('items', ItemController::class)->names('items');
 Route::resource('catalogos', CatalogoController::class)->names('catalogos');
+Route::resource('asignaciones', AsignacionController::class)->names('asignaciones');
 Route::resource('proveedores', ProveedorController::class)->parameters(['proveedores' => 'proveedor']);
 
 Route::resource('licitaciones', LicitacionController::class)->names('licitaciones')->parameters(['licitaciones'=>'licitacion']);
@@ -111,34 +114,39 @@ Route::resource('cdps', CdpController::class)->names('cdps');
 
 Route::resource('clientesmedidores', ClienteMedidorController::class)->names('clientesmedidores')->parameters(['clientesmedidores' => 'clientemedidor']);
 
+
 // ****** CONSUMOS BASICOS ******************//
     Route::get('/consultas/electricidad', [ConsultaController::class, 'DtesElectricidad'])->name('consultas.electricidad.index');
     Route::get('/consultas/agua', [ConsultaController::class, 'DtesAguaPatagonia'])->name('consultas.agua.index');
  Route::resource('detalledtes', DetalledteController::class);
 
 Route::resource('ordenescompras', OrdenCompraController::class)->names('ordenescompras');
-Route::resource('clientesmedidores', ClienteMedidorController::class)->names('clientesmedidores')->parameters(['clientesmedidores' => 'ClienteMedidor']);
 
-Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('/admin/usuarios', \App\Http\Livewire\Admin\Users::class)->name('admin.usuarios');
+
+
+Route::prefix('excel')->group(function () {
+    
+    // Mostrar el formulario para subir el archivo Excel
+    Route::get('importar', [ExcelPreviewController::class, 'showForm'])
+        ->name('excel.import-form');
+
+    // Procesar el archivo Excel y mostrar vista previa (sin guardar en BD)
+    Route::post('importar', [ExcelPreviewController::class, 'import'])
+        ->name('excel.import');
+
+    // Confirmar e insertar registros válidos en la base de datos
+    Route::post('guardar', [ExcelPreviewController::class, 'store'])
+        ->name('excel.store');
+
+    // Cancelar la operación y limpiar la sesión
+    Route::post('cancelar', [ExcelPreviewController::class, 'cancel'])
+        ->name('excel.cancel');
 });
 
+Route::get('/dtes/{id}/detalle', [DteController::class, 'detalleForm'])->name('dtes.detalle.form');
+Route::post('/dtes/{id}/detalle', [DteController::class, 'detalleStore'])->name('dtes.detalle.store');
+Route::put('/dtes/{id}/detalle', [DteController::class, 'detalleUpdate'])->name('dtes.detalle.update');
 
-Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('/admin/roles', \App\Http\Livewire\Admin\Roles::class)->name('admin.roles');
-});
-
-Route::middleware(['auth', 'role:admin'])->get('/admin/roles-permisos', \App\Http\Livewire\Admin\RolesPermisos::class)->name('admin.roles-permisos');
-
-
-
-
-
-
-
-
-Route::get('/importar-excel', [ExcelPreviewController::class, 'showForm'])->name('excel.form');
-Route::post('/importar-excel', [ExcelPreviewController::class, 'import'])->name('excel.import');
 
 
 

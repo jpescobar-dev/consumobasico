@@ -1,76 +1,54 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\ClienteMedidor;
 use App\Models\Proveedor;
 use App\Models\Ccosto;
 use Illuminate\Http\Request;
+use App\Http\Requests\ClientesmedidorRequest;
 
 class ClienteMedidorController extends Controller
 {
     public function index()
     {
-        
-        $clientesmedidores = ClienteMedidor::with(['proveedor', 'ccosto'])->get();
+        $clientesmedidores = ClienteMedidor::all();
         return view('clientesmedidores.index', compact('clientesmedidores'));
     }
 
     public function create()
     {
-        $proveedores = Proveedor::all();
-        $ccostos = Ccosto::all();
+        $proveedores = Proveedor::pluck('nombre', 'rutproveedor');
+        $ccostos = Ccosto::pluck('nombre', 'ccosto');
         return view('clientesmedidores.create', compact('proveedores', 'ccostos'));
     }
 
-    public function store(Request $request)
+    public function store(ClientesmedidorRequest $request)
     {
-        $validated = $request->validate([
-            'numerocliente' => 'required|string|max:20|unique:clientesmedidores,numerocliente',
-            'medidor'       => 'nullable|string|max:20',
-            'rutproveedor'  => 'required|string|exists:proveedores,rutproveedor',
-            'ccosto'        => 'required|string|exists:ccostos,ccosto',
-            'tipo'          => 'required|string|max:50',
-            'tarifa'        => 'required|in:Normal,Calefaccion',
-            'vigente'       => 'boolean',
-        ]);
-
-        ClienteMedidor::create($validated);
-        return redirect()->route('clientesmedidores.index')->with('success', 'Cliente Medidor creado exitosamente.');
+        ClienteMedidor::create($request->validated());
+        return redirect()->route('clientesmedidores.index')->with('success', 'Cliente medidor creado correctamente.');
     }
 
-    public function show(ClienteMedidor $clienteMedidor)
+    public function show(ClienteMedidor $clientesmedidor)
     {
-        $clientesmedidores = ClienteMedidor::with(['proveedor', 'ccosto'])->get();
-
-        return view('clientesmedidores.show', compact('clienteMedidor'));
+        return view('clientesmedidores.show', compact('clientesmedidor'));
     }
 
-    public function edit(ClienteMedidor $clienteMedidor)
+    public function edit(ClienteMedidor $clientesmedidor)
     {
-        $proveedores = Proveedor::all();
-        $ccostos = Ccosto::all();
-        return view('clientesmedidores.edit', compact('clienteMedidor', 'proveedores', 'ccostos'));
+        $proveedores = Proveedor::pluck('nombre', 'rutproveedor');
+        $ccostos = Ccosto::pluck('nombre', 'ccosto');
+        return view('clientesmedidores.edit', compact('clientesmedidor', 'proveedores', 'ccostos'));
     }
 
-    public function update(Request $request, ClienteMedidor $clienteMedidor)
+    public function update(ClientesmedidorRequest $request, ClienteMedidor $clientesmedidor)
     {
-        $validated = $request->validate([
-            'medidor'       => 'nullable|string|max:20',
-            'rutproveedor'  => 'required|string|exists:proveedores,rutproveedor',
-            'ccosto'        => 'required|string|exists:ccostos,ccosto',
-            'tipo'          => 'required|string|max:50',
-            'tarifa'        => 'required|in:Normal,Calefaccion',
-            'vigente'       => 'boolean',
-        ]);
-
-        $clienteMedidor->update($validated);
-        return redirect()->route('clientesmedidores.index')->with('success', 'Cliente Medidor actualizado correctamente.');
+        $clientesmedidor->update($request->validated());
+        return redirect()->route('clientesmedidores.index')->with('success', 'Cliente medidor actualizado correctamente.');
     }
 
-    public function destroy(ClienteMedidor $clienteMedidor)
+    public function destroy(ClienteMedidor $clientesmedidor)
     {
-        $clienteMedidor->delete();
-        return redirect()->route('clientesmedidores.index')->with('success', 'Cliente Medidor eliminado.');
+        $clientesmedidor->delete();
+        return redirect()->route('clientesmedidores.index')->with('success', 'Cliente medidor eliminado correctamente.');
     }
 }

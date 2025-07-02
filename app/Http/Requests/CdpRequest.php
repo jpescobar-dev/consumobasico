@@ -20,7 +20,7 @@ class CdpRequest extends FormRequest
             'cfinanciero_id' => 'required|integer',
             'requerimiento' => 'nullable|string|max:255',
             'descripcion' => 'required|string',
-            'ccosto_id' => 'required|exists:ccostos,id',
+            'ccosto' => 'required|exists:ccostos,ccosto',
             'moneda' => 'required|in:CLP,UF',
             'total_moneda_compra' => 'nullable|string|max:255',
             'paridad' => 'nullable|numeric',

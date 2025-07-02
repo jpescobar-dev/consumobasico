@@ -13,13 +13,33 @@
 @section('title2', 'Índice')
 
 @section('content')
-<div class="widget-content widget-content-area br-6 mt-2 mb-2">
-    <div class="">
-        <a href="{{ route('items.create') }}" class="btn btn-primary btn-sm mt-2 mb-2">
-            <i class="fas fa-plus"></i> Nuevo Item
-        </a>
-    </div>  
+<div class="widget-content widget-content-area br-6 mt-2 mb-2">    
+    <div id="content" class="main-content">
+        <div class="layout-px-spacing">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>                 
+                    @include('layouts.theme.partials.breadcrumb')
+                </div>
+                <div>
+                    <h4>Items Presupuestarios</h4>
+                </div>
 
+                <div>
+                    <!-- Contenido derecho -->
+                    <a href="{{ route('items.create') }}" class="btn btn-outline-primary btn-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="84" height="84" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="16"></line>
+                            <line x1="8" y1="12" x2="16" y2="12"></line>
+                        </svg>    
+                    </a>
+                </div>
+            </div>  
+
+            <!-- Tabla de Documentos Tributarios -->
+            <div class="row mt-4">
+                <div class="col-xl-12">
+                    <div class="widget widget-table-one">
     <table id="html5-extension" class="table table-hover table-striped" style="width:100%">
         <thead>
             <tr>             
@@ -33,27 +53,35 @@
             @foreach ($items as $item)
                 <tr>
                     <td>{{ $item->item }}</td>
-                    <td>{{ $item->nombre }}</td>
-                    <td>{{ $item->descripcion }}</td>
+                    {{-- <td>{{ $item->nombre }}</td> --}}
+                     <td>{{ Str::limit($item->nombre, 100) }}</td>
+                      <td>{{ Str::limit($item->descripcion, 100) }}</td>
+                    {{-- <td>{{ $item->descripcion }}</td> --}}
                     <td class="text-center">
                         <a href="{{ route('items.show', $item) }}" class="btn btn-sm btn-outline-primary" title="Ver">
                             <i class="fas fa-eye"></i>
                         </a>
-                        <a href="{{ route('items.edit', $item) }}" class="btn btn-sm btn-outline-warning" title="Editar">
+                        {{-- <a href="{{ route('items.edit', $item) }}" class="btn btn-sm btn-outline-warning" title="Editar">
                             <i class="fas fa-edit"></i>
-                        </a>
-                        <form action="{{ route('items.destroy', $item) }}" method="POST" class="d-inline" onsubmit="return confirm('¿Está seguro de eliminar este item?');">
+                        </a> --}}
+                        {{-- <form action="{{ route('items.destroy', $item) }}" method="POST" class="d-inline" onsubmit="return confirm('¿Está seguro de eliminar este item?');">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-sm btn-outline-danger" title="Eliminar">
                                 <i class="fas fa-trash"></i>
                             </button>
-                        </form>
+                        </form> --}}
                     </td>                 
                 </tr>
             @endforeach
-        </tbody>
-    </table>
+       </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>
 @endsection
 

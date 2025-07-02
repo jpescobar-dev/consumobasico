@@ -40,8 +40,8 @@
         </div>
 
         <div class="form-group text-end">
-            <a href="{{ route('items.index') }}" class="btn btn-secondary btn-sm">Cancelar</a>
-            <button type="submit" class="btn btn-primary btn-sm">Guardar</button>
+            <a href="{{ route('items.index') }}" class="btn btn-outline-warning btn-sm">Cancelar</a>
+            <button type="submit" class="btn btn-outline-primary btn-sm">Guardar</button>
         </div>
     </form>
 </div>

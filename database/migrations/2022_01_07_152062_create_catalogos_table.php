@@ -9,8 +9,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('catalogos', function (Blueprint $table) {
-            $table->string('catalogo', 10)->primary(); // Ajustá el largo si lo sabés
-            $table->string('descripcion', 100);        // O el largo que tú necesites
+            $table->string('catalogo', 10)->primary(); 
+            $table->string('nombre', 100);
+            $table->longText('descripcion');        
             $table->enum('estado', ['Activo', 'Inactivo']);
             $table->string('item', 10); // Mismo largo que en la tabla items
 

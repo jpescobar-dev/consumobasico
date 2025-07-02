@@ -53,12 +53,16 @@ class Dtes extends Model
     {
         return $this->belongsTo(User::class, 'RutEmisor', 'rut');
     }
+   
 
-
-    public function detalledtes()
+    // Relación hacia detalle de consumo básico
+    public function consumoBasico()
     {
-        return $this->hasMany(\App\Models\Detalledte::class, 'dte_id');
+        return $this->hasOne(DetalleConsumoBasico::class, 'dtes_id');
     }
+
+
+
 
     
 }

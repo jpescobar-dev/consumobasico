@@ -16,7 +16,7 @@ class Cdp extends Model
         'cfinanciero_id',
         'requerimiento',
         'descripcion',
-        'ccosto_id',
+        'ccosto',
         'moneda',
         'total_moneda_compra',
         'paridad',

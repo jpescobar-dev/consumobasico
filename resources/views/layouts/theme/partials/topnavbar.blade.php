@@ -39,16 +39,25 @@
                 <ul class="collapse submenu list-unstyled" id="menu2" data-parent="#topAccordion">
                    
                     <li class="sub-sub-submenu-list">
-                        <a href="#sub-sub-category" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> Documentos Tributarios <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg> </a>
+                        <a href="#sub-sub-category" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> Documentos Tributarios 
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg> </a>
                         <ul class="collapse list-unstyled sub-submenu" id="sub-sub-category" data-parent="#menu"> 
                             <li>
-                                <a href="{{ route('dashboard') }}"> Mensual </a>
+                                <a href="{{ route('dashboard') }}"> Documentos </a>
                             </li>
+
+                             <li>
+                                <a href="{{ route('dashElectricidad') }}"> Electricidad </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('dashAguaPotable') }}"> Agua Potable </a>
+                            </li>
+                            
                                                     
                         </ul>
                     </li>
 
-                    <li class="sub-sub-submenu-list">
+                    {{-- <li class="sub-sub-submenu-list">
                         <a href="#sub-sub-category" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> Certificados Disponibilidad <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg> </a>
                         <ul class="collapse list-unstyled sub-submenu" id="sub-sub-category" data-parent="#menu"> 
                             <li>
@@ -58,7 +67,7 @@
                                 <a href="{{ route('catalogos.index') }}">Por catalogo</a>
                             </li>
                         </ul>
-                    </li>
+                    </li> --}}
                 </ul>
             </li>
        
@@ -180,7 +189,7 @@
                 </a>
                 <ul class="collapse submenu list-unstyled" id="menu2" data-parent="#topAccordion">
                    
-                    <!-- <li class="sub-sub-submenu-list">
+                <!--<li class="sub-sub-submenu-list">
                         <a href="#sub-sub-category" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> Electricidad <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg> </a>
                         <ul class="collapse list-unstyled sub-submenu" id="sub-sub-category" data-parent="#menu"> 
                             <li>
@@ -194,20 +203,38 @@
                             </li>
                         </ul>
                     </li> -->
-
-                    <li class="sub-sub-submenu-list">
-                        <a href="#sub-sub-category" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> Catálogo Presupuestario <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg> </a>
-                        <ul class="collapse list-unstyled sub-submenu" id="sub-sub-category" data-parent="#menu"> 
-                        <li>
-                        <a href="{{ route('items.index') }}">Item</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('catalogos.index') }}">Cuentas</a>
-                    </li>
+                           
+                            <li class="sub-sub-submenu-list">
+                                <a href="#sub-sub-category" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> Catálogo Presupuestario <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg> </a>
+                                <ul class="collapse list-unstyled sub-submenu" id="sub-sub-category" data-parent="#menu"> 
+                                    <li>
+                                        <a href="{{ route('items.index') }}">Items</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="{{ route('asignaciones.index') }}">Asignaciones</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('catalogos.index') }}">Cuentas</a>
+                                    </li>
+                                     <li>
+                                        {{-- <a href="{{ route('flujo.asignaciones') }}">Consultor</a> --}}
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="sub-sub-submenu-list">
+                                <a href="#sub-sub-category" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> Certificados Disponibilidad <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg> </a>
+                                <ul class="collapse list-unstyled sub-submenu" id="sub-sub-category" data-parent="#menu"> 
+                                    <li>
+                                        <a href="{{ route('items.index') }}">Mensuales</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('catalogos.index') }}">Por catalogo</a>
+                                    </li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
-                </ul>
-            </li>
 
 
             <li class="menu single-menu">
@@ -285,7 +312,7 @@
                                 </g>
                             </g>
                         </svg>
-                        <span>Proyectos</span>
+                        <span>Iniciativas</span>
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
                 </a>
@@ -328,7 +355,7 @@
                             <a href="{{ route('dtes.index') }}">Indice</a>
                         </li>
                     <li>
-                        <a href="{{ route('dtes.import.form')}}">Importar Dte's</a>
+                        <a href="{{ route('excel.import-form')}}">Importar Dte's</a>
                     </li>
                         </ul>
                     </li>

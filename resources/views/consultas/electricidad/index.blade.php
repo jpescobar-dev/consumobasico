@@ -17,15 +17,30 @@
 @section('title2', 'Indice')
 
 @section('content')
-<div class="widget-content widget-content-area br-6 mt-2 mb-2">
-        <div class="">
-            <a href="#" class="btn btn-primary btn-sm mt-2 mb-2">
-                <i class="fas fa-plus"></i> Dashboard
-            </a>
-        </div>  
- 
-    <table id="html5-extension" class="table table-hover table-striped" style="width:100%">
-        
+
+<div class="widget-content widget-content-area br-6 mt-2 mb-2">    
+    <div id="content" class="main-content">
+        <div class="layout-px-spacing">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>                 
+                    @include('layouts.theme.partials.breadcrumb')
+                </div>
+                <div>
+                    <h4>Consumo Electricidad</h4>
+                </div>
+
+                <div>     
+                     <a href="{{ route('dashElectricidad')}}" class="btn btn-outline-primary btn-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-pie-chart"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
+                     </a>
+                </div>
+            </div>  
+
+            <!-- Tabla de Documentos Tributarios -->
+            <div class="row mt-4">
+                <div class="col-xl-12">
+                    <div class="widget widget-table-one">
+                        <table id="html5-extension" class="table table-hover table-striped" style="width:100%">
         <thead class="">
             <tr>             
                 <th>IRF</th>
@@ -56,35 +71,59 @@
                                    
                     <td>{{ $dte->Estado }}</td>
 
-                    <td class="text-center">
+                    {{-- <td class="text-center">
                         <a href="{{ $dte->Url }}" class="btn btn-sm btn-outline-primary" title="Dte">
                             <i class="fa-solid fa-file-invoice-dollar"></i>
                         </a>
                         
-                        <a href="#" class="btn btn-sm btn-outline-warning" title="Detalle">
+                        <a href="{{ route('dtes.detalle.form', ['id' => $dte->id]) }}"
+                                 class="btn btn-sm btn-outline-warning" title="Detalle">
                             <i class="fa-solid fa-circle-info"></i>
                         </a>
-                        
-                    </td>                 
+                    </td>    --}}
+
+
+                    <td class="text-center">
+                        {{-- <a href="{{ $dte->Url }}" class="btn btn-sm btn-outline-primary" title="Dte">
+                            <i class="fa-solid fa-file-invoice-dollar"></i>
+                        </a> --}}
+
+                        @if (!$dte->detalle)
+                            <a href="{{ route('dtes.detalle.form', ['id' => $dte->id]) }}"
+                            class="btn btn-sm btn-outline-warning" title="Ingresar Detalle">
+                                <i class="fa-solid fa-circle-info"></i>
+                            </a>
+                        @else
+                            <button class="btn btn-sm btn-outline-secondary" title="Detalle ya ingresado" disabled>
+                                <i class="fa-solid fa-circle-info"></i>
+                            </button>
+                        @endif
+                    </td>
+              
                 </tr>
             @endforeach
         </tbody>
-    </table>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>
+
+
 @endsection
 
-
 @section('scripts')
-    <script src="{{asset('plugins/table/datatable/datatables.js')}}"></script>
-
-    <!-- NOTE TO Use Copy CSV Excel PDF Print Options You Must Include These Files  -->
-    <script src="{{asset('plugins/table/datatable/button-ext/dataTables.buttons.min.js')}}"></script>
-    <script src="{{asset('plugins/table/datatable/button-ext/jszip.min.js')}}"></script>    
-    <script src="{{asset('plugins/table/datatable/button-ext/buttons.html5.min.js')}}"></script>
-    <script src="{{asset('plugins/table/datatable/button-ext/buttons.print.min.js')}}"></script>
-    <script src="{{asset('plugins/highlight/highlight.pack.js')}}"></script>
-    <script src="{{asset('assets/js/custom.js')}}"></script>  
-    <script src="{{asset('assets/js/scrollspyNav.js')}}"></script>
+    <script src="{{ asset('plugins/table/datatable/datatables.js') }}"></script>
+    <script src="{{ asset('plugins/table/datatable/button-ext/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('plugins/table/datatable/button-ext/jszip.min.js') }}"></script>    
+    <script src="{{ asset('plugins/table/datatable/button-ext/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('plugins/table/datatable/button-ext/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('plugins/highlight/highlight.pack.js') }}"></script>
+    <script src="{{ asset('assets/js/custom.js') }}"></script>  
+    <script src="{{ asset('assets/js/scrollspyNav.js') }}"></script>
 
     <script>
         $('#html5-extension').DataTable({
@@ -109,11 +148,11 @@
             ],
             oLanguage: {
                 oPaginate: {
-                    sPrevious: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" ...></svg>',
-                    sNext: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" ...></svg>'
+                    sPrevious: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">...</svg>',
+                    sNext: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">...</svg>'
                 },
                 sInfo: "Mostrando página _PAGE_ de _PAGES_",
-                sSearch: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" ...></svg>',
+                sSearch: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">...</svg>',
                 sSearchPlaceholder: "Buscar...",
                 sLengthMenu: "Resultados : _MENU_"
             },
@@ -121,7 +160,5 @@
             lengthMenu: [10, 20, 50],
             pageLength: 10
         });
-    </script>
-    
+    </script>    
 @endsection
-

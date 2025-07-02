@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->unsignedBigInteger('cfinanciero_id')->default(14);
             $table->string('requerimiento')->nullable();
             $table->text('descripcion');            
-            $table->unsignedBigInteger('ccostos_id');
+            $table->unsignedBigInteger('ccosto');
             $table->enum('moneda', ['CLP', 'UF']);          
             $table->string('total_moneda_compra')->nullable(); // puede contener decimales y comas
             $table->decimal('paridad', 15, 4)->nullable();

@@ -21,7 +21,7 @@ class DetalledteController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'dte_id' => 'required|exists:dtes,id',
+            'dte_id' => 'required|exists:dtes,id|unique:detalle_consumos_basicos,dte_id',  
             'tipo' => 'required|in:Contrato,Orden Compra,Consumo Basico',
             'cliente_id' => 'required|exists:clientesmedidores,id',
             'periodoconsumo' => 'required|string|max:20',

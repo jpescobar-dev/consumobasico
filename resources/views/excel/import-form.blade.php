@@ -1,38 +1,117 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Subir Excel</title>
-    <style>
-        body { font-family: sans-serif; padding: 20px; }
-        input[type="file"] { margin: 10px 0; }
-        button { padding: 5px 10px; }
-        .success { color: green; font-weight: bold; }
-        .errors { color: red; }
-    </style>
-</head>
-<body>
-    <h1>Subir archivo Excel</h1>
+@extends('layouts.theme.app')
 
-    @if (session('success'))
-        <div style="color: green;">{{ session('success') }}</div>
-    @endif
+@section('content')
+    @include('layouts.theme.partials.breadcrumb', ['breadcrumb' => 'Importar Excel'])
 
-    @if ($errors->any())
-        <div style="color: red;">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+
+                <div class="card">
+                    <div class="card-header">
+                        <h6>Cargar Informacion del Sistema Gestion Financiera</h6>
+                    </div>
+
+                    <div class="card-body">
+                        <form action="{{ route('excel.import') }}" method="POST" enctype="multipart/form-data" id="upload-form">
+                            @csrf
+                            <div class="form-group">
+                                <label for="excel_file">Seleccionar archivo Excel:</label>
+                                <input type="file" id="excel_file" name="excel_file" accept=".xlsx,.xls" class="form-control" required>
+                            </div>
+
+                            <div class="mt-3">
+                                <button type="submit" class="btn btn-outline-primary">Previsualizar</button>
+                                <button type="button" id="clear-form" class="btn btn-outline-warning">Limpiar Formulario</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
         </div>
+    </div>
+@endsection
+
+@push('scripts')
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const clearButton = document.getElementById('clear-form');
+    const fileInput = document.getElementById('excel_file');
+    const uploadForm = document.getElementById('upload-form');
+
+    // Limpiar formulario
+    if (clearButton && fileInput) {
+        clearButton.addEventListener('click', function () {
+            Swal.fire({
+                title: '¿Limpiar formulario?',
+                text: "Se eliminará el archivo seleccionado.",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#aaa',
+                confirmButtonText: 'Sí, limpiar',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    fileInput.value = '';
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Formulario limpio',
+                        timer: 1500,
+                        showConfirmButton: false
+                    });
+                }
+            });
+        });
+    }
+
+    // Spinner al enviar
+    if (uploadForm) {
+        uploadForm.addEventListener('submit', function () {
+            Swal.fire({
+                title: 'Procesando...',
+                html: 'Por favor espera...',
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                }
+            });
+        });
+    }
+
+    // Mensajes al volver
+    @if(session('success'))
+        Swal.fire({
+            icon: 'success',
+            title: '¡Éxito!',
+            text: '{{ session('success') }}',
+            timer: 3000,
+            showConfirmButton: false
+        });
     @endif
 
-    <form action="{{ route('excel.import') }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        <label for="excel_file">Seleccionar archivo Excel:</label>
-        <input type="file" id="excel_file" name="excel_file" accept=".xlsx,.xls" required>
-        <button type="submit">Subir</button>
-    </form>
-</body>
-</html>
+    @if(session('info'))
+        Swal.fire({
+            icon: 'info',
+            title: 'Importación cancelada',
+            text: '{{ session('info') }}',
+            timer: 3000,
+            showConfirmButton: false
+        });
+    @endif
+
+    @if(session('error'))
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: '{{ session('error') }}',
+        });
+    @endif
+});
+</script>
+@endpush

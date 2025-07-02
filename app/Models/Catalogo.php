@@ -19,6 +19,7 @@ class Catalogo extends Model
 
     protected $fillable = [
         'catalogo',
+        'nombre',
         'descripcion',
         'estado',
         'item',
@@ -33,5 +34,6 @@ class Catalogo extends Model
     public function item()
     {
         return $this->belongsTo(Item::class, 'item', 'item');
-    }
+    }    
+   
 }

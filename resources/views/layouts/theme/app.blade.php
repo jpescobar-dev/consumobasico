@@ -136,10 +136,10 @@
 
    
     </style>      
-  
+
     @yield('styles')  
     
-    @livewireStyles  
+    @livewireStyles      
 </head>
 
 <body class="sidebar-noneoverflow">
@@ -193,6 +193,7 @@
     {{-- <script src="{{asset('assets/js/scrollspyNav.js')}}"></script>    --}}
 
     @yield('scripts')   
+    @stack('scripts')
 
     @livewireScripts
 </body>

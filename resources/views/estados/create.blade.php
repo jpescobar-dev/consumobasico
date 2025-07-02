@@ -12,8 +12,8 @@
             <form action="{{ route('estados.store') }}" method="POST">
                 @csrf
                 @include('estados.form')
-                <button type="submit" class="btn btn-primary">Guardar</button>
-                <a href="{{ route('cfinancieros.index') }}" class="btn btn-warning">Volver</a>
+                <button type="submit" class="btn btn-outline-primary">Guardar</button>
+                <a href="{{ route('cfinancieros.index') }}" class="btn btn-outline-warning">Volver</a>
             </form>
         </div>
     </div>

@@ -14,17 +14,18 @@ class DatabaseSeeder extends Seeder
             ProveedoresSeeder::class, 
             ItemsSeeder::class, 
             CatalogosSeeder::class,  
+            AsignacionesSeeder::class,
             CfinancierosSeeder::class, 
             CcostosSeeder::class,
-            // ClientesmedidoresSeeder::class,
+            ClientesmedidoresSeeder::class,
             EstadosSeeder::class,
             ContratosSeeder::class,
             LicitacionesSeeder::class,
             OrdenescomprasSeeder::class,
+            IniciativasSeeder::class,
+            ProyectosSeeder::class,
             RolesAndPermissionsSeeder::class
-         
-
-            
+                     
             // ProfilesTableSeeder::class,         
            
         ]); 

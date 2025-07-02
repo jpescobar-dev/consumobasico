@@ -14,8 +14,7 @@ return new class extends Migration
         Schema::create('items', function (Blueprint $table) {         
             $table->string('item')->primary();    
             $table->string('nombre');                   // Nombre o descripción del item
-            $table->text('descripcion')->nullable();    // Descripción opcional
-
+            $table->longText('descripcion')->nullable();    // Descripción opcional   
             $table->timestamps();
         });
     }

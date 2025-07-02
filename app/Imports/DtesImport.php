@@ -64,8 +64,8 @@ class DtesImport implements ToModel, WithHeadingRow
 
         
         // Depurar los valores antes de insertar (puedes desactivarlo si ya funciona)
-        logger()->info('Fila procesada correctamente', $normalizedRow);
-       // $this->importedData[] = $normalizedRow;
+
+        // logger()->info('Fila procesada correctamente', $normalizedRow);     
 
        $this->importedData[] = $normalizedRow;
 
