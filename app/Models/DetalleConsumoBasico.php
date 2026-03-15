@@ -16,17 +16,21 @@ class DetalleConsumoBasico extends Model
     protected $fillable = [
         'dtes_id',
         'tipo',
-        'numerocliente',
-        'periodoconsumo',
-        'lecturaanterior',
-        'lecturaactual',
+        'numerocliente',       
         'consumo',
     ];
 
-    // Relación inversa hacia Dte
+    // Relación inversa hacia Dte   
+
+    public function numcliente()
+    {
+       return $this->belongsTo(ClientesMedidores::class, 'numerocliente');
+    }
+
     public function dte()
     {
         return $this->belongsTo(Dtes::class, 'dtes_id');
     }
+
     
 }

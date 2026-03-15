@@ -20,3 +20,6 @@ class CreateCfinancierosTable extends Migration
         Schema::dropIfExists('cfinancieros');
     }
 }
+
+
+

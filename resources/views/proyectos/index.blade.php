@@ -10,6 +10,13 @@
 <link href="{{asset('assets/css/scrollspyNav.css')}}" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/forms/theme-checkbox-radio.css')}}">
 <link href="{{asset('assets/css/tables/table-basic.css')}}" rel="stylesheet" type="text/css" />
+<style>
+    /* Cambia color del texto en toda la fila al hacer hover */
+    table.table-hover tbody tr:hover td {
+        color: #46576f; /* Azul Bootstrap 5 */
+        font-weight: 500; /* Ligero realce de peso */
+    }
+</style>
   
 @endsection
 
@@ -31,7 +38,7 @@
 
                 <div>
                     <!-- Contenido derecho -->
-                    <a href="{{ route('proyectos.create') }}" class="btn btn-outline-primary btn-sm">
+                    <a href="{{ route('proyectos.create') }}" class="btn btn-outline-primary btn-sm" title="Nuevo Proyecto">
                         <svg xmlns="http://www.w3.org/2000/svg" width="84" height="84" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle">
                             <circle cx="12" cy="12" r="10"></circle>
                             <line x1="12" y1="8" x2="12" y2="16"></line>
@@ -50,15 +57,15 @@
                 <tr>      
                     <th>ID</th>          
                     <th>Código</th> 
-                    <th>C.Financiero</th>
+                    <th>C.F</th>
                     <th>Nombre</th>
                     <th>Descripción</th>                  
                     <th>Fecha Inicio</th>
-                    <th>Fecha Término</th>
+                    {{-- <th>Fecha Término</th> --}}
                     <th>Estado</th>
                     <th>Avance</th>
-                    <th>Monto Estimado</th>                    
-                    <th>Monto Asignado</th>
+                    <th>Monto</th>                    
+                    {{-- <th>Monto Asignado</th> --}}
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -68,16 +75,18 @@
                         <td>{{ $proyecto->id }}</td>  
                         <td>{{ $proyecto->codigo }}</td>
                         <td>{{ $proyecto->centroFinanciero->cfinanciero ?? 'N/A' }}</td>                
-                        <td>{{ $proyecto->proyecto }}</td>
-                        <td>{{ $proyecto->descripcion }}</td>                        
+                        <td>{{ Str::limit($proyecto->proyecto , 25)}}</td>
+                        <td>{{ Str::limit($proyecto->descripcion , 40)}}</td>
+                                             
                         <td>{{ $proyecto->fecha_inicio }}</td>
-                        <td>{{ $proyecto->fecha_termino }}</td>
+                        {{-- <td>{{ $proyecto->fecha_termino }}</td> --}}
                         <td>{{ $proyecto->estado->nombre ?? 'N/A' }}</td>
                         <td>{{ $proyecto->avance }}%</td>
                         <td>{{ number_format($proyecto->monto_estimado, 0) }}</td>
-                        <td>{{ number_format($proyecto->monto_asignado, 0) }}</td>                   
+                        {{-- <td>{{ number_format($proyecto->monto_asignado, 0) }}</td>                    --}}
                         
-                        
+                         {{-- <td>{{ Str::limit($catalogo->nombre, 45) }}</td> --}}
+
                         <td>   
                             <a href="{{ route('proyectos.show', $proyecto) }}" class="btn btn-sm btn-outline-primary" title="Ver">
                                 <i class="fas fa-eye"></i>

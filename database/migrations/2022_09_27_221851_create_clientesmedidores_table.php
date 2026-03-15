@@ -26,8 +26,8 @@ class CreateClientesmedidoresTable extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
 
-            $table->string('tipo', 50);
-            $table->enum('tarifa', ['Normal', 'Calefaccion']);
+            $table->string('tarifa', 50);
+            $table->enum('tipo', ['Normal', 'Calefaccion']);
             $table->boolean('vigente')->default(true);
 
             $table->timestamps();

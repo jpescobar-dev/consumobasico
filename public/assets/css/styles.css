@@ -1,0 +1,45 @@
+/* styles.css */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+}
+
+.button-container {
+    text-align: center;
+}
+
+.custom-button {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #000000; /* Color de fondo negro */
+    border: 2px solid #ff0000; /* Borde rojo */
+    border-radius: 8px;
+    text-decoration: none;
+    color: #ffffff; /* Texto blanco */
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.custom-button img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.custom-button span {
+    margin-left: 10px;
+}
+
+.custom-button:hover {
+    background-color: #ff0000; /* Cambiar a rojo al pasar el cursor */
+}
+
+.custom-button:active {
+    background-color: #cc0000; /* Rojo oscuro al hacer clic */
+}

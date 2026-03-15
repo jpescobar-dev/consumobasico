@@ -29,7 +29,14 @@ class Licitacion extends Model
         'numero_ofertas_recibidas',
         'fecha_publicacion',
         'fecha_adjudicacion',
+        ];   
+
+    protected $casts = [
+    'fecha_publicacion' => 'datetime',
+    'fecha_adjudicacion' => 'datetime',
+    'deleted_at' => 'datetime',
     ];
+
 
     public function getRouteKeyName()
     {

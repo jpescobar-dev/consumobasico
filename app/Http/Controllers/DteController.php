@@ -9,6 +9,9 @@ use App\Models\Dtes;
 use Illuminate\Support\Facades\Session;
 use App\Models\DetalleConsumoBasico;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+
 
 class DteController extends Controller
 {
@@ -105,9 +108,7 @@ public function detalleStore(Request $request, $id)
         $data = $request->validate([
             'tipo' => 'required|string',
             'numerocliente' => 'required|string',
-            'periodoconsumo' => 'required|string',
-            'lecturaanterior' => 'required|integer',
-            'lecturaactual' => 'required|integer',
+            'periodoconsumo' => 'required|string',            
             'consumo' => 'required|integer',
         ]);
 
@@ -115,7 +116,9 @@ public function detalleStore(Request $request, $id)
         $detalle->dtes_id = $dte->id;
         $detalle->save();
 
-        return redirect()->route('dtes.index')->with('success', 'Detalle creado correctamente.');
+        return redirect()->route('consultas.electricidad.index')->with('success', 'Detalle creado correctamente.');
+
+       
     }
 
 public function detalleUpdate(Request $request, $id)
@@ -140,9 +143,6 @@ public function detalleUpdate(Request $request, $id)
 
     return redirect()->route('dtes.index')->with('success', 'Detalle actualizado correctamente.');
 }
-
-
-
 
 
 }

@@ -35,4 +35,9 @@ class Proyecto extends Model
     {
         return $this->belongsTo(Estado::class, 'estado_id');
     }
+
+    public function cdps(): HasMany
+    {
+        return $this->hasMany(Cdp::class, 'proyecto_id');
+    }
 }

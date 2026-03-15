@@ -29,17 +29,16 @@
                     </div>
 
                     @foreach ([
-                        'tipo' => 'Tipo',
-                        'numerocliente' => 'Número Cliente',
-                        'periodoconsumo' => 'Periodo Consumo',
-                        'lecturaanterior' => 'Lectura Anterior',
-                        'lecturaactual' => 'Lectura Actual',
-                        'consumo' => 'Consumo'
+                        'tipo'              => 'Tipo',
+                        'numerocliente'     => 'Número Cliente',
+                        'periodoconsumo'    => 'Periodo Consumo',                   
+                        'consumo'           => 'Consumo'
+                        
                     ] as $name => $label)
                         <div class="col-md-6 mb-3">
                             <label for="{{ $name }}" class="form-label">{{ $label }}</label>
                             <input
-                                type="{{ in_array($name, ['lecturaanterior', 'lecturaactual', 'consumo']) ? 'number' : 'text' }}"
+                                type="{{ in_array($name, ['consumo']) ? 'number' : 'text' }}"
                                 class="form-control @error($name) is-invalid @enderror"
                                 name="{{ $name }}"
                                 value="{{ old($name) }}"
@@ -52,10 +51,10 @@
                     @endforeach
 
                     <div class="col-12 mt-3">
-                        <button type="submit" class="btn btn-outline-success">
+                        <button type="submit" class="btn btn-outline-primary">
                             <i class="fas fa-save"></i> Guardar Detalle
                         </button>
-                        <a href="{{ route('consultas.electricidad.index') }}" class="btn btn-outline-secondary">
+                        <a href="{{ route('consultas.electricidad.index') }}" class="btn btn-outline-warning">
                             <i class="fas fa-arrow-left"></i> Cancelar
                         </a>
                     </div>

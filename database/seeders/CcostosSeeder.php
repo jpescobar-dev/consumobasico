@@ -64,7 +64,108 @@ class CcostosSeeder extends Seeder
                 'ccosto' => '1471031301',
                 'nombre' => 'LETRAS GTÍA. Y FAMILIA AYSÉN',
                 'cfinanciero' => '1471',
-            ]
+            ],
+
+            [
+                'ccosto' => '1400090001',
+                'nombre' => 'VIVIENDA JUDICIAL - 01',
+                'cfinanciero' => '1400',
+            ],
+            [
+                'ccosto' => '1400090002',
+                'nombre' => 'VIVIENDA JUDICIAL - 02',
+                'cfinanciero' => '1400',
+            ],
+            [
+                'ccosto' => '1400090003',
+                'nombre' => 'VIVIENDA JUDICIAL - 03',
+                'cfinanciero' => '1400',
+            ],
+            [
+                'ccosto' => '1400090004',
+                'nombre' => 'VIVIENDA JUDICIAL - 04',
+                'cfinanciero' => '1400',
+            ],
+            [
+                'ccosto' => '1400090005',
+                'nombre' => 'VIVIENDA JUDICIAL - 05',
+                'cfinanciero' => '1400',
+            ],
+            [
+                'ccosto' => '1400090006',
+                'nombre' => 'VIVIENDA JUDICIAL - 06',
+                'cfinanciero' => '1400',
+            ],
+            [
+                'ccosto' => '1400090007',
+                'nombre' => 'VIVIENDA JUDICIAL - 07',
+                'cfinanciero' => '1400',
+            ],
+            [
+                'ccosto' => '1400090008',
+                'nombre' => 'VIVIENDA JUDICIAL - 08',
+                'cfinanciero' => '1400',
+            ],
+            [
+                'ccosto' => '1400090009',
+                'nombre' => 'VIVIENDA JUDICIAL - 09',
+                'cfinanciero' => '1400',
+            ],
+            [
+                'ccosto' => '1400090010',
+                'nombre' => 'VIVIENDA JUDICIAL - 10',
+                'cfinanciero' => '1400',
+            ],
+            [
+                'ccosto' => '1400090011',
+                'nombre' => 'VIVIENDA JUDICIAL - 11',
+                'cfinanciero' => '1400',
+            ],
+            [
+                'ccosto' => '1400090012',
+                'nombre' => 'VIVIENDA JUDICIAL - 12',
+                'cfinanciero' => '1400',
+            ],
+            [
+                'ccosto' => '1400090013',
+                'nombre' => 'VIVIENDA JUDICIAL - 13',
+                'cfinanciero' => '1400',
+            ],
+            [
+                'ccosto' => '1400090014',
+                'nombre' => 'VIVIENDA JUDICIAL - 14',
+                'cfinanciero' => '1400',
+            ],
+            [
+                'ccosto' => '1400090015',
+                'nombre' => 'VIVIENDA JUDICIAL - 15',
+                'cfinanciero' => '1400',
+            ],
+            [
+                'ccosto' => '1400090016',
+                'nombre' => 'VIVIENDA JUDICIAL - 16',
+                'cfinanciero' => '1400',
+            ],
+            [
+                'ccosto' => '1400090017',
+                'nombre' => 'VIVIENDA JUDICIAL - 17',
+                'cfinanciero' => '1400',
+            ],
+            [
+                'ccosto' => '1400090018',
+                'nombre' => 'VIVIENDA JUDICIAL - 18',
+                'cfinanciero' => '1400',
+            ],
+            [
+                'ccosto' => '1400090019',
+                'nombre' => 'VIVIENDA JUDICIAL - 19',
+                'cfinanciero' => '1400',
+            ],
+            [
+                'ccosto' => '1400090020',
+                'nombre' => 'VIVIENDA JUDICIAL - 20',
+                'cfinanciero' => '1400',
+            ],
         ]);
     }
 }

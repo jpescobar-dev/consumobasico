@@ -62,6 +62,10 @@ class Dtes extends Model
     }
 
 
+    public function getDetalleAttribute()
+    {
+        return $this->consumoBasico;
+    }
 
 
     

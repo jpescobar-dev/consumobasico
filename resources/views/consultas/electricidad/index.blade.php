@@ -58,7 +58,7 @@
             @foreach ($dtesElectricidad as $dte)
                 <tr>
                
-                    <td>{{ $dte->idRedFlow }}</td>
+                    <td>{{ $dte->id }}</td>
                     {{-- <td>{{ $dte->NumeroDte }}</td>   --}}
                     <td style="font-weight: bold; text-align: right">
                         <a href="{{$dte->Url}}" class="rounded bs-tooltip" target="_blank" title="Ver PDF">{{ $dte->NumeroDte }}</a>   
@@ -88,18 +88,17 @@
                             <i class="fa-solid fa-file-invoice-dollar"></i>
                         </a> --}}
 
-                        @if (!$dte->detalle)
+                        @if (!$dte->consumoBasico)
                             <a href="{{ route('dtes.detalle.form', ['id' => $dte->id]) }}"
-                            class="btn btn-sm btn-outline-warning" title="Ingresar Detalle">
+                            class="btn btn-sm btn-outline-primary" title="Ingresar Detalle">
                                 <i class="fa-solid fa-circle-info"></i>
                             </a>
                         @else
-                            <button class="btn btn-sm btn-outline-secondary" title="Detalle ya ingresado" disabled>
-                                <i class="fa-solid fa-circle-info"></i>
+                            <button class="btn btn-sm btn-outline-warning" title="Detalle ya ingresado" disabled>
+                                <i class="fa-solid fa-circle-check"></i>
                             </button>
                         @endif
-                    </td>
-              
+                    </td>              
                 </tr>
             @endforeach
         </tbody>

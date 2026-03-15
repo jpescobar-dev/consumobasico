@@ -1,7 +1,7 @@
 @extends('layouts.theme.app')
 
-@section('title', 'Detalle Orden de Compra')
-@section('title2', 'Vista Detallada')
+@section('title', 'Ordenes de Compras')
+@section('title2', 'Vista Detalle')
 
 @section('content')
 <div class="widget-content widget-content-area br-6 mt-2 mb-2">

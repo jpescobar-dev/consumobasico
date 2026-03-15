@@ -4,9 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-
-
 
 class Ccosto extends Model
 {
@@ -23,16 +22,13 @@ class Ccosto extends Model
         'cfinanciero',
     ];
 
-    // Relación con Cfinanciero (N:1)
-    public function cfinanciero()
+    public function centroFinanciero(): BelongsTo
     {
         return $this->belongsTo(Cfinanciero::class, 'cfinanciero', 'cfinanciero');
     }
 
-    public function clientesmedidores(): HasMany
+    public function cdps(): HasMany
     {
-        return $this->hasMany(Clientemedidor::class, 'ccosto', 'ccosto');
+        return $this->hasMany(Cdp::class, 'ccosto', 'ccosto');
     }
-
-    
 }

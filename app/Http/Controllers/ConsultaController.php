@@ -41,4 +41,6 @@ class ConsultaController extends Controller
             $dte = \App\Models\Dtes::with('detalledtes.cliente')->findOrFail($id);
             return response()->json($dte);
         }
+
+    
 }

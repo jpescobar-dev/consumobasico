@@ -16,5 +16,10 @@ class Estado extends Model
         'tabla_referencia',
     ];
 
+    public function cdps(): HasMany
+    {
+        return $this->hasMany(Cdp::class, 'estado_id');
+    }
+
     
 }

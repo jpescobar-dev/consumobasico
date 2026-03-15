@@ -35,6 +35,16 @@ class OrdenCompra extends Model
         'total',
     ];
 
+
+     protected $casts = [
+    'fecha_creacion' => 'datetime',
+    'fecha_envio' => 'datetime',
+    'deleted_at' => 'datetime',
+    ];
+
+
+   
+
     public function getRouteKeyName()
     {
         return 'orden_compra';

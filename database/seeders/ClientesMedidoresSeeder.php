@@ -15,8 +15,8 @@ class ClientesMedidoresSeeder extends Seeder
         'medidor' => 'ELECTRICIDAD',
         'rutproveedor' => '88272600-2',
         'ccosto' => 1400010201,
-        'tipo' => 'BLANCA',
-        'tarifa' => 'CALEFACCION',
+        'tarifa' => 'BLANCA',
+        'tipo' => 'CALEFACCION',
         'vigente' => 1
     ],
 [
@@ -24,8 +24,8 @@ class ClientesMedidoresSeeder extends Seeder
         'medidor' => 'ELECTRICIDAD',
         'rutproveedor' => '88272600-2',
         'ccosto' => 1400010201,
-        'tipo' => 'BT4-3',
-        'tarifa' => 'NORMAL',
+        'tarifa' => 'BT4-3',
+        'tipo' => 'NORMAL',
         'vigente' => 1
     ],
 [
@@ -33,8 +33,8 @@ class ClientesMedidoresSeeder extends Seeder
         'medidor' => 'ELECTRICIDAD',
         'rutproveedor' => '88272600-2',
         'ccosto' => 1400010201,
-        'tipo' => 'AT4-3',
-        'tarifa' => 'NORMAL',
+        'tarifa' => 'AT4-3',
+        'tipo' => 'NORMAL',
         'vigente' => 1
     ],
 [
@@ -42,8 +42,8 @@ class ClientesMedidoresSeeder extends Seeder
         'medidor' => 'ELECTRICIDAD',
         'rutproveedor' => '88272600-2',
         'ccosto' => 1400010201,
-        'tipo' => 'AT4-1',
-        'tarifa' => 'NORMAL',
+        'tarifa' => 'AT4-1',
+        'tipo' => 'NORMAL',
         'vigente' => 1
     ],
 [
@@ -51,8 +51,8 @@ class ClientesMedidoresSeeder extends Seeder
         'medidor' => 'ELECTRICIDAD',
         'rutproveedor' => '88272600-2',
         'ccosto' => 1400010201,
-        'tipo' => 'BT4-3',
-        'tarifa' => 'NORMAL',
+        'tarifa' => 'BT4-3',
+        'tipo' => 'NORMAL',
         'vigente' => 1
     ],
 [
@@ -60,8 +60,8 @@ class ClientesMedidoresSeeder extends Seeder
         'medidor' => 'ELECTRICIDAD',
         'rutproveedor' => '88272600-2',
         'ccosto' => 1400010201,
-        'tipo' => 'BLANCA',
-        'tarifa' => 'CALEFACCION',
+        'tarifa' => 'BLANCA',
+        'tipo' => 'CALEFACCION',
         'vigente' => 1
     ],
 [
@@ -69,8 +69,8 @@ class ClientesMedidoresSeeder extends Seeder
         'medidor' => 'ELECTRICIDAD',
         'rutproveedor' => '88272600-2',
         'ccosto' => 1400010201,
-        'tipo' => 'BT3-B',
-        'tarifa' => 'NORMAL',
+        'tarifa' => 'BT3-B',
+        'tipo' => 'NORMAL',
         'vigente' => 1
     ],
 [
@@ -78,8 +78,8 @@ class ClientesMedidoresSeeder extends Seeder
         'medidor' => 'ELECTRICIDAD',
         'rutproveedor' => '88272600-2',
         'ccosto' => 1400010201,
-        'tipo' => 'BT3-B',
-        'tarifa' => 'NORMAL',
+        'tarifa' => 'BT3-B',
+        'tipo' => 'NORMAL',
         'vigente' => 1
     ],
 [
@@ -87,8 +87,8 @@ class ClientesMedidoresSeeder extends Seeder
         'medidor' => 'ELECTRICIDAD',
         'rutproveedor' => '88272600-2',
         'ccosto' => 1400010201,
-        'tipo' => 'BLANCA',
-        'tarifa' => 'CALEFACCION',
+        'tarifa' => 'BLANCA',
+        'tipo' => 'CALEFACCION',
         'vigente' => 1
     ],
 [
@@ -96,8 +96,8 @@ class ClientesMedidoresSeeder extends Seeder
         'medidor' => 'ELECTRICIDAD',
         'rutproveedor' => '88272600-2',
         'ccosto' => 1400010201,
-        'tipo' => 'BT1',
-        'tarifa' => 'NORMAL',
+        'tarifa' => 'BT1',
+        'tipo' => 'NORMAL',
         'vigente' => 1
     ],
 [
@@ -105,8 +105,8 @@ class ClientesMedidoresSeeder extends Seeder
         'medidor' => 'ELECTRICIDAD',
         'rutproveedor' => '88272600-2',
         'ccosto' => 1400010201,
-        'tipo' => 'BT1',
-        'tarifa' => 'NORMAL',
+        'tarifa' => 'BT1',
+        'tipo' => 'NORMAL',
         'vigente' => 1
     ],
 [
@@ -114,8 +114,8 @@ class ClientesMedidoresSeeder extends Seeder
         'medidor' => 'ELECTRICIDAD',
         'rutproveedor' => '88272600-2',
         'ccosto' => 1400010201,
-        'tipo' => 'BT4-3',
-        'tarifa' => 'NORMAL',
+        'tarifa' => 'BT4-3',
+        'tipo' => 'NORMAL',
         'vigente' => 1
     ],
 [
@@ -123,8 +123,8 @@ class ClientesMedidoresSeeder extends Seeder
         'medidor' => 'ELECTRICIDAD',
         'rutproveedor' => '88272600-2',
         'ccosto' => 1400010201,
-        'tipo' => 'BLANCA',
-        'tarifa' => 'CALEFACCION',
+        'tarifa' => 'BLANCA',
+        'tipo' => 'CALEFACCION',
         'vigente' => 1
     ],
 [
@@ -132,8 +132,8 @@ class ClientesMedidoresSeeder extends Seeder
         'medidor' => 'ELECTRICIDAD',
         'rutproveedor' => '88272600-2',
         'ccosto' => 1400010201,
-        'tipo' => 'BT1',
-        'tarifa' => 'NORMAL',
+        'tarifa' => 'BT1',
+        'tipo' => 'NORMAL',
         'vigente' => 1
     ],
 [
@@ -141,8 +141,8 @@ class ClientesMedidoresSeeder extends Seeder
         'medidor' => 'ELECTRICIDAD',
         'rutproveedor' => '88272600-2',
         'ccosto' => 1400010201,
-        'tipo' => 'BT3-PP',
-        'tarifa' => 'NORMAL',
+        'tarifa' => 'BT3-PP',
+        'tipo' => 'NORMAL',
         'vigente' => 1
     ],
 [
@@ -150,8 +150,8 @@ class ClientesMedidoresSeeder extends Seeder
         'medidor' => 'ELECTRICIDAD',
         'rutproveedor' => '88272600-2',
         'ccosto' => 1400010201,
-        'tipo' => 'BLANCA',
-        'tarifa' => 'CALEFACCION',
+        'tarifa' => 'BLANCA',
+        'tipo' => 'CALEFACCION',
         'vigente' => 1
     ],
 [
@@ -159,8 +159,8 @@ class ClientesMedidoresSeeder extends Seeder
         'medidor' => 'ELECTRICIDAD',
         'rutproveedor' => '88272600-2',
         'ccosto' => 1400010201,
-        'tipo' => 'BT-43',
-        'tarifa' => 'NORMAL',
+        'tarifa' => 'BT-43',
+        'tipo' => 'NORMAL',
         'vigente' => 1
     ],
 [
@@ -168,8 +168,8 @@ class ClientesMedidoresSeeder extends Seeder
         'medidor' => 'ELECTRICIDAD',
         'rutproveedor' => '88272600-2',
         'ccosto' => 1400010201,
-        'tipo' => 'BLANCA',
-        'tarifa' => 'CALEFACCION',
+        'tarifa' => 'BLANCA',
+        'tipo' => 'CALEFACCION',
         'vigente' => 1
     ],
 [
@@ -177,8 +177,8 @@ class ClientesMedidoresSeeder extends Seeder
         'medidor' => 'ELECTRICIDAD',
         'rutproveedor' => '88272600-2',
         'ccosto' => 1400010201,
-        'tipo' => 'Ciro Arredondo S/N',
-        'tarifa' => 'NORMAL',
+        'tarifa' => 'Ciro Arredondo S/N',
+        'tipo' => 'NORMAL',
         'vigente' => 0
     ],
 [
@@ -186,8 +186,8 @@ class ClientesMedidoresSeeder extends Seeder
         'medidor' => 'ELECTRICIDAD',
         'rutproveedor' => '88272600-2',
         'ccosto' => 1400010201,
-        'tipo' => 'Ciro Arredondo S/N',
-        'tarifa' => 'NORMAL',
+        'tarifa' => 'Ciro Arredondo S/N',
+        'tipo' => 'NORMAL',
         'vigente' => 0
     ],
 [
@@ -195,8 +195,8 @@ class ClientesMedidoresSeeder extends Seeder
         'medidor' => 'ELECTRICIDAD',
         'rutproveedor' => '88272600-2',
         'ccosto' => 1400010201,
-        'tipo' => 'Ciro Arredondo S/N',
-        'tarifa' => 'NORMAL',
+        'tarifa' => 'Ciro Arredondo S/N',
+        'tipo' => 'NORMAL',
         'vigente' => 0
     ],
 [
@@ -204,8 +204,8 @@ class ClientesMedidoresSeeder extends Seeder
         'medidor' => 'ELECTRICIDAD',
         'rutproveedor' => '88272600-2',
         'ccosto' => 1400010201,
-        'tipo' => 'Ramon Freire 293',
-        'tarifa' => 'NORMAL',
+        'tarifa' => 'Ramon Freire 293',
+        'tipo' => 'NORMAL',
         'vigente' => 0
     ],
 [
@@ -213,8 +213,8 @@ class ClientesMedidoresSeeder extends Seeder
         'medidor' => 'ELECTRICIDAD',
         'rutproveedor' => '88272600-2',
         'ccosto' => 1400010201,
-        'tipo' => 'Ramon Freire 293',
-        'tarifa' => 'NORMAL',
+        'tarifa' => 'Ramon Freire 293',
+        'tipo' => 'NORMAL',
         'vigente' => 0
     ],
 [
@@ -222,10 +222,150 @@ class ClientesMedidoresSeeder extends Seeder
         'medidor' => 'ELECTRICIDAD',
         'rutproveedor' => '88272600-2',
         'ccosto' => 1400010201,
-        'tipo' => 'Moraleda 448',
-        'tarifa' => 'NORMAL',
+        'tarifa' => 'Moraleda 448',
+        'tipo' => 'NORMAL',
         'vigente' => 0
-    ]
+],
+
+
+// NUEVOS CLIENTES
+    [
+        'numerocliente' => '1011401',
+        'medidor' => 'ELECTRICIDAD',
+        'rutproveedor' => '88272600-2',
+        'ccosto' => 1400010201,
+        'tarifa' => 'Sin direccion',
+        'tipo' => 'NORMAL',
+        'vigente' => 1
+    ], 
+    [
+        'numerocliente' => '10091997',
+        'medidor' => 'ELECTRICIDAD',
+        'rutproveedor' => '88272600-2',
+        'ccosto' => 1400010201,
+        'tarifa' => 'Sin direccion',
+        'tipo' => 'NORMAL',
+        'vigente' => 1
+    ], 
+    [
+        'numerocliente' => '10099037',
+        'medidor' => 'ELECTRICIDAD',
+        'rutproveedor' => '88272600-2',
+        'ccosto' => 1400010201,
+        'tarifa' => 'Sin direccion',
+        'tipo' => 'NORMAL',
+        'vigente' => 1
+    ], 
+    [
+        'numerocliente' => '10099168',
+        'medidor' => 'ELECTRICIDAD',
+        'rutproveedor' => '88272600-2',
+        'ccosto' => 1400010201,
+        'tarifa' => 'Sin direccion',
+        'tipo' => 'NORMAL',
+        'vigente' => 1
+    ], 
+    [
+        'numerocliente' => '10100106',
+        'medidor' => 'ELECTRICIDAD',
+        'rutproveedor' => '88272600-2',
+        'ccosto' => 1400010201,
+        'tarifa' => 'Sin direccion',
+        'tipo' => 'NORMAL',
+        'vigente' => 1
+    ], 
+    [
+        'numerocliente' => '10100511',
+        'medidor' => 'ELECTRICIDAD',
+        'rutproveedor' => '88272600-2',
+        'ccosto' => 1400010201,
+        'tarifa' => 'Sin direccion',
+        'tipo' => 'NORMAL',
+        'vigente' => 1
+    ], 
+    [
+        'numerocliente' => '10117916',
+        'medidor' => 'ELECTRICIDAD',
+        'rutproveedor' => '88272600-2',
+        'ccosto' => 1400010201,
+        'tarifa' => 'Sin direccion',
+        'tipo' => 'NORMAL',
+        'vigente' => 1
+    ], 
+    [
+        'numerocliente' => '10119499',
+        'medidor' => 'ELECTRICIDAD',
+        'rutproveedor' => '88272600-2',
+        'ccosto' => 1400010201,
+        'tarifa' => 'Sin direccion',
+        'tipo' => 'NORMAL',
+        'vigente' => 1
+    ], 
+    [
+        'numerocliente' => '10119500',
+        'medidor' => 'ELECTRICIDAD',
+        'rutproveedor' => '88272600-2',
+        'ccosto' => 1400010201,
+        'tarifa' => 'Sin direccion',
+        'tipo' => 'NORMAL',
+        'vigente' => 1
+    ], 
+    [
+        'numerocliente' => '10119501',
+        'medidor' => 'ELECTRICIDAD',
+        'rutproveedor' => '88272600-2',
+        'ccosto' => 1400010201,
+        'tarifa' => 'Sin direccion',
+        'tipo' => 'NORMAL',
+        'vigente' => 1
+    ], 
+    [
+        'numerocliente' => '10119502',
+        'medidor' => 'ELECTRICIDAD',
+        'rutproveedor' => '88272600-2',
+        'ccosto' => 1400010201,
+        'tarifa' => 'Sin direccion',
+        'tipo' => 'NORMAL',
+        'vigente' => 1
+    ], 
+    [
+        'numerocliente' => '10119503',
+        'medidor' => 'ELECTRICIDAD',
+        'rutproveedor' => '88272600-2',
+        'ccosto' => 1400010201,
+        'tarifa' => 'Sin direccion',
+        'tipo' => 'NORMAL',
+        'vigente' => 1
+    ], 
+    [
+        'numerocliente' => '10119504',
+        'medidor' => 'ELECTRICIDAD',
+        'rutproveedor' => '88272600-2',
+        'ccosto' => 1400010201,
+        'tarifa' => 'Sin direccion',
+        'tipo' => 'NORMAL',
+        'vigente' => 1
+    ], 
+    [
+        'numerocliente' => '10122862',
+        'medidor' => 'ELECTRICIDAD',
+        'rutproveedor' => '88272600-2',
+        'ccosto' => 1400010201,
+        'tarifa' => 'Sin direccion',
+        'tipo' => 'NORMAL',
+        'vigente' => 1
+    ], 
+    [
+        'numerocliente' => '10122863',
+        'medidor' => 'ELECTRICIDAD',
+        'rutproveedor' => '88272600-2',
+        'ccosto' => 1400010201,
+        'tarifa' => 'Sin direccion',
+        'tipo' => 'NORMAL',
+        'vigente' => 1
+    ],
+
+
         ]);
     }
 }

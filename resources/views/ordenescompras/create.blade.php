@@ -1,11 +1,29 @@
 @extends('layouts.theme.app')
 
-@section('title', 'Crear Orden de Compra')
-@section('title2', 'Nueva Orden')
+@section('title', 'Ordenes de Compras')
+@section('title2', 'Nueva O.C')
 
 @section('content')
+
 <div class="widget-content widget-content-area br-6 mt-2 mb-2">
-    @include('partials.alerts')
+    <div id="content" class="main-content">
+        <div class="layout-px-spacing">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    @include('layouts.theme.partials.breadcrumb')
+                </div>
+                <div>
+                    <h4>Crear Orden de Compra</h4>
+                </div>
+                <div>
+                    <a href="{{ route('ordenescompras.index') }}" class="btn btn-outline-warning btn-sm">Volver</a>
+                </div>
+            </div>
+
+            @include('partials.alerts')
+
+            <div class="widget-content widget-content-area br-6 mt-2 mb-2">
 
     <form action="{{ route('ordenescompras.store') }}" method="POST">
         @csrf
@@ -120,11 +138,11 @@
                 @error('total')<span class="invalid-feedback d-block">{{ $message }}</span>@enderror
             </div>
         </div>
-
-        <div class="form-group text-end">
-            <a href="{{ route('ordenescompras.index') }}" class="btn btn-secondary btn-sm">Cancelar</a>
-            <button type="submit" class="btn btn-primary btn-sm">Guardar</button>
-        </div>
+       
+         <div class="form-group text-end">
+                        <a href="{{ route('ordenescompras.index') }}" class="btn btn-outline-warning btn-sm">Cancelar</a>
+                        <button type="submit" class="btn btn-outline-primary btn-sm">Guardar</button>
+                    </div>
     </form>
 </div>
 @endsection

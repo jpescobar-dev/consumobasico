@@ -13,6 +13,8 @@ class LicitacionController extends Controller
         return view('licitaciones.index', compact('licitaciones'));
     }
 
+
+
     public function create()
     {
         return view('licitaciones.create');
@@ -82,4 +84,6 @@ class LicitacionController extends Controller
         $licitacion->delete();
         return redirect()->route('licitaciones.index')->with('success', 'Licitación eliminada exitosamente.');
     }
+
+    
 }

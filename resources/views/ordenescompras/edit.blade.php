@@ -1,12 +1,31 @@
 @extends('layouts.theme.app')
 
-@section('title', 'Editar Orden de Compra')
-@section('title2', 'Modificar Registro')
+@section('title', 'Ordenes de Compras')
+@section('title2', 'Actualizar O.C')
 
 @section('content')
-<div class="widget-content widget-content-area br-6 mt-2 mb-2">
-    @include('ordenescompras.partials.alerts')
 
+<div class="widget-content widget-content-area br-6 mt-2 mb-2">
+    <div id="content" class="main-content">
+        <div class="layout-px-spacing">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    @include('layouts.theme.partials.breadcrumb')
+                </div>
+                <div>
+                    <h4>Actualizar Orden de Compra</h4>
+                </div>
+                <div>
+                    <a href="{{ route('ordenescompras.index') }}" class="btn btn-outline-warning btn-sm">Volver</a>
+                  
+                </div>
+            </div>
+
+            @include('partials.alerts')
+
+            {{-- <div class="widget-content widget-content-area br-6 mt-2 mb-2"> --}}
+            <div class="card shadow-sm  rounded p-4 mt-3">
     <form action="{{ route('ordenescompras.update', $ordencompra) }}" method="POST">
         @csrf
         @method('PUT')
@@ -84,8 +103,8 @@
         </div>
 
         <div class="form-group text-end">
-            <a href="{{ route('ordenescompras.index') }}" class="btn btn-secondary btn-sm">Cancelar</a>
-            <button type="submit" class="btn btn-primary btn-sm">Actualizar</button>
+            <a href="{{ route('ordenescompras.index') }}" class="btn btn-outline-warning btn-sm">Cancelar</a>
+            <button type="submit" class="btn btn-outline-primary btn-sm">Actualizar</button>
         </div>
     </form>
 </div>

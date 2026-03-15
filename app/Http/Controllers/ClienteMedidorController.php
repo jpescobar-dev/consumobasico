@@ -28,27 +28,37 @@ class ClienteMedidorController extends Controller
         return redirect()->route('clientesmedidores.index')->with('success', 'Cliente medidor creado correctamente.');
     }
 
-    public function show(ClienteMedidor $clientesmedidor)
+    public function show(ClienteMedidor $clientemedidor)
     {
-        return view('clientesmedidores.show', compact('clientesmedidor'));
+        return view('clientesmedidores.show', compact('clientemedidor'));
     }
 
-    public function edit(ClienteMedidor $clientesmedidor)
+    public function edit(ClienteMedidor $clientemedidor)
     {
         $proveedores = Proveedor::pluck('nombre', 'rutproveedor');
         $ccostos = Ccosto::pluck('nombre', 'ccosto');
-        return view('clientesmedidores.edit', compact('clientesmedidor', 'proveedores', 'ccostos'));
+
+        return view('clientesmedidores.edit', compact('clientemedidor', 'proveedores', 'ccostos'));
     }
 
-    public function update(ClientesmedidorRequest $request, ClienteMedidor $clientesmedidor)
+    public function update(ClientesmedidorRequest $request, ClienteMedidor $clientemedidor)
     {
-        $clientesmedidor->update($request->validated());
-        return redirect()->route('clientesmedidores.index')->with('success', 'Cliente medidor actualizado correctamente.');
+        $clientemedidor->update($request->validated());
+
+        return redirect()
+            ->route('clientesmedidores.index')
+            ->with('success', 'Cliente medidor actualizado correctamente.');
     }
 
-    public function destroy(ClienteMedidor $clientesmedidor)
+    public function destroy(ClienteMedidor $clientemedidor)
     {
-        $clientesmedidor->delete();
-        return redirect()->route('clientesmedidores.index')->with('success', 'Cliente medidor eliminado correctamente.');
-    }
+        $clientemedidor->delete();
+
+        return redirect()
+            ->route('clientesmedidores.index')
+            ->with('success', 'Cliente medidor eliminado correctamente.');
+    }    
 }
+
+
+

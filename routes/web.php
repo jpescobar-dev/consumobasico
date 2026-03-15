@@ -23,8 +23,13 @@ use App\Http\Controllers\CdpController;
 use App\Http\Controllers\OrdenCompraController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\DashboardElectricidadController;
+use App\Http\Controllers\ReporteConsumoElectricidadController;
+use App\Http\Controllers\DashboardElectricidadComparativoController;
 
 use App\Http\Controllers\ExcelPreviewController;
+
+
 
 
 Route::resource('users', UserController::class)->names('users');
@@ -34,10 +39,7 @@ Route::resource('users', UserController::class)->names('users');
 // })->middleware('role:admin');
 
 Route::resource('roles', RoleController::class)->middleware(['auth', 'role:admin']);
-
-
 Route::get('/usuarios', [UserController::class, 'index'])->middleware('permission:users.index');
-
 Route::get('/admin', fn() => 'Panel Admin')->middleware('role:admin');
 
 
@@ -51,7 +53,7 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
-Route::get('/dashElectricidad', [DashboardController::class, 'dashElectricidad'])
+Route::get('/dashElectricidad', [DashboardElectricidadController::class, 'dashElectricidad'])
     ->middleware(['auth', 'verified'])
     ->name('dashElectricidad');
 
@@ -59,6 +61,9 @@ Route::get('/dashAguaPotable', [DashboardController::class, 'dashAguaPotable'])
     ->middleware(['auth', 'verified'])
     ->name('dashAguaPotable');
 
+Route::get('/dashDte', [DashboardController::class, 'dashDte'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashDte');
 
 
 Route::middleware('auth')->group(function () {
@@ -101,6 +106,11 @@ Route::resource('asignaciones', AsignacionController::class)->names('asignacione
 Route::resource('proveedores', ProveedorController::class)->parameters(['proveedores' => 'proveedor']);
 
 Route::resource('licitaciones', LicitacionController::class)->names('licitaciones')->parameters(['licitaciones'=>'licitacion']);
+Route::resource('ordenescompras', OrdenCompraController::class)->names('ordenescompras')->parameters(['ordenescompras'=>'ordencompra']);
+
+
+
+
 
 Route::resource('estados', EstadoController::class)->names('estados');
 Route::resource('dtes', DteController::class)->names('dtes');
@@ -116,11 +126,11 @@ Route::resource('clientesmedidores', ClienteMedidorController::class)->names('cl
 
 
 // ****** CONSUMOS BASICOS ******************//
-    Route::get('/consultas/electricidad', [ConsultaController::class, 'DtesElectricidad'])->name('consultas.electricidad.index');
-    Route::get('/consultas/agua', [ConsultaController::class, 'DtesAguaPatagonia'])->name('consultas.agua.index');
- Route::resource('detalledtes', DetalledteController::class);
+Route::get('/consultas/electricidad', [ConsultaController::class, 'DtesElectricidad'])->name('consultas.electricidad.index');
+Route::get('/consultas/agua', [ConsultaController::class, 'DtesAguaPatagonia'])->name('consultas.agua.index');
+Route::resource('detalledtes', DetalledteController::class);
 
-Route::resource('ordenescompras', OrdenCompraController::class)->names('ordenescompras');
+
 
 
 
@@ -151,18 +161,31 @@ Route::put('/dtes/{id}/detalle', [DteController::class, 'detalleUpdate'])->name(
 
 
 
+Route::get('/dashboard/alertas', [DashboardController::class, 'dashAlertas'])->name('dashboard.alertas');
 
 
 
 
+Route::get('/dashboard/alertas_2', [DashboardController::class, 'dashAlertas_2'])->name('dashboard.alertas_2');
 
 
 
 
+use App\Http\Controllers\DashboardElectricidadFiltroController;
+
+Route::get('/dashboard-electricidad-filtro', [DashboardElectricidadFiltroController::class, 'index'])
+    ->name('dashboard.electricidad.filtro');
 
 
+Route::get('/dashboard-electricidad-filtro/fae-sin-detalle', [DashboardElectricidadFiltroController::class, 'faeSinDetalle'])
+    ->name('dashboard.electricidad.fae_sin_detalle');
 
+   
 
+Route::get('/reportes/consumo-electricidad', [ReporteConsumoElectricidadController::class, 'index'])
+    ->name('reportes.consumo-electricidad.index');
 
+ 
 
-
+Route::get('/dashboard/electricidad/comparativo', [DashboardElectricidadComparativoController::class, 'index'])
+    ->name('dashboard.electricidad.comparativo');

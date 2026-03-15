@@ -1,21 +1,17 @@
-    
-
-    
 try {
-       // Convertir JSON a objetos JavaScript válidos
-       let meses = JSON.parse('{!! json_encode($meses) !!}');
-       let cantidadDtes = JSON.parse('{!! json_encode($cantidadDtes) !!}');
-       let totalMontos = JSON.parse('{!! json_encode($totalMontos) !!}');
-
-       console.log("Meses:", meses);
-       console.log("Cantidad DTEs:", cantidadDtes);
-       console.log("Total Montos:", totalMontos);
 
   /*
 
     Dropdown
 
   */
+    let meses = @json($meses);
+    let cantidadDtes = @json($cantidadDtes);
+    let totalMontos = @json($totalMontos);
+
+    console.log("Meses:", meses);
+    console.log("Cantidad DTEs:", cantidadDtes);
+    console.log("Total Montos:", totalMontos);
 
   var filterDropdown = function() {
       var getDropdownElement = document.querySelectorAll('.filter.custom-dropdown-icon .dropdown-item');
@@ -67,17 +63,17 @@ var d_2options1 = {
         }
     }],
     series: [{
-        name: 'Dtes',
-        data: cantidadDtes
+        name: 'Total',
+        data: [100,200,300,400,500,600,500,400,300,200,100,600]
     },{
-        name: 'Totales',
-        data: totalMontos
+        name: 'cantidad',
+        data: [5,8,2,6,8,2,3,4,5,6,5,8]
     }],
     xaxis: {
         labels: {
             show: false,
         },
-        categories: meses,
+        categories: ['Ene', 'Feb','Mar', 'Abr','May', 'Jun','Jul','Ago','Sep','Oct', 'Nov', 'Dic'],
     },
     yaxis: {
         show: false
@@ -134,10 +130,10 @@ var d_2options2 = {
     opacity: 1,
   },
   series: [{
-    name: 'Sales',
-    data: [28, 40, 36, 52, 38, 60, 38, 52, 36, 40]
+    name: 'Totales',
+    data: [totalMontos]
   }],
-  labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+  labels: [meses],
   yaxis: {
     min: 0
   },
@@ -281,13 +277,13 @@ var options1 = {
       lineCap: 'square'
   },
   series: [{
-      name: 'Totales',
-      data: totalMontos
+      name: 'Income',
+      data: [16800, 16800, 15500, 17800, 1115500, 17000, 19000, 16000, 15000, 17000, 14000, 17000]
   }, {
-      name: 'Dtes',
-      data: cantidadDtes
+      name: 'Expenses',
+      data: [16500, 17500, 16200, 17300, 16000, 19500, 16000, 17000, 16000, 19000, 18000, 19000]
   }],
-  labels: meses,
+  labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
   xaxis: {
     axisBorder: {
       show: false
@@ -464,8 +460,8 @@ var options = {
       show: true,
       width: 25,
     },
-    series: [985, 737, 10],
-    labels: ['FAE', 'FEEX', 'Otros'],
+    series: [985, 737, 270],
+    labels: ['Apparel', 'Electronic', 'Others'],
     responsive: [{
         breakpoint: 1599,
         options: {
@@ -527,8 +523,8 @@ d_2C_2.render();
         Revenue Monthly | Render
     ================================
 */
-var grafico_1 = new ApexCharts(
-    document.querySelector("#grafico_1"),
+var chart1 = new ApexCharts(
+    document.querySelector("#revenueMonthly"),
     options1
 );
 

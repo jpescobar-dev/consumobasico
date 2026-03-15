@@ -38,4 +38,10 @@ class ClienteMedidor extends Model
         {
             return $this->belongsTo(Ccosto::class, 'ccosto', 'ccosto');
         }
+
+    public function detalles()
+        {
+            return $this->hasMany(DetalleConsumoBasico::class, 'numerocliente', 'numerocliente');
+        }   
+
 }

@@ -1,6 +1,6 @@
 @extends('layouts.theme.app')
 
-@section('title', 'Dashboard')
+@section('title', 'Dashboard Dtes index')
 @section('title2', 'Documentos Tributarios')
 
 @section('styles')
@@ -34,11 +34,12 @@
                         <h5 class="mt-3 ml-3">Cantidad Tipo de Documento</h5>
                         <div id="chart2"></div>
                     </div>
-                </div>               
+                </div>     
+                        
             </div>
 
             <!-- Tabla de Documentos Tributarios -->
-            <div class="row mt-4">
+            {{-- <div class="row mt-4">
                 <div class="col-xl-12">
                     <div class="widget widget-table-one">
                         <h5 class="mt-3 ml-3">Documentos Tributarios</h5>
@@ -79,8 +80,14 @@
                         
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
+             <div class="col-xl-4">
+                    <div class="widget widget-chart-two">
+                        <h5 class="mt-3 ml-3">Tarifa</h5>
+                        <div id="chart3"></div>
+                    </div>
+                </div>     
         </div>
     </div>
 </div>
@@ -159,6 +166,7 @@
         var options2 = {
             chart: {
                 type: 'donut',
+                height: 380,
                 width: 380
             },
             labels: tipos,
@@ -186,7 +194,7 @@
             },
             "order": [[1, "desc"]],
             "stripeClasses": [],
-            "lengthMenu": [7, 10, 20, 50],
+            "lengthMenu": [7,  20, 50],
             "pageLength": 7
         });
     });

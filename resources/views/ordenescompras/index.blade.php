@@ -7,22 +7,46 @@
 <link href="{{ asset('assets/css/scrollspyNav.css') }}" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/forms/theme-checkbox-radio.css') }}">
 <link href="{{ asset('assets/css/tables/table-basic.css') }}" rel="stylesheet" type="text/css" />
+<style>
+    table.table-hover tbody tr:hover td {
+        color: #46576f;
+        font-weight: 500;
+    }
+</style>
 @endsection
 
-@section('title', 'Órdenes de Compra')
-@section('title2', 'Listado General')
+@section('title', 'Ordenes de Compras')
+@section('title2', 'Índice')
 
 @section('content')
 <div class="widget-content widget-content-area br-6 mt-2 mb-2">
-    <div>
-        <a href="{{ route('ordenescompras.create') }}" class="btn btn-primary btn-sm mt-2 mb-2">
-            <i class="fas fa-plus"></i> Nueva Orden de Compra
-        </a>
-    </div>
+    <div id="content" class="main-content">
+        <div class="layout-px-spacing">
 
-    <table id="html5-extension" class="table table-hover table-striped" style="width:100%">
-        <thead>
-            <tr>
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    @include('layouts.theme.partials.breadcrumb')
+                </div>
+                <div>
+                    <h4>Listado de Ordenes de Compras</h4>
+                </div>
+                <div>
+                    <a href="{{ route('ordenescompras.create') }}" class="btn btn-outline-primary btn-sm" title="Nueva Orden de Compra">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="84" height="84" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="16"></line>
+                            <line x1="8" y1="12" x2="16" y2="12"></line>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-xl-12">
+                    <div class="widget widget-table-one">
+                        <table id="html5-extension" class="table table-hover table-striped" style="width:100%">
+                            <thead>
+                                <tr>
                 <th>N° Orden</th>
                 <th>Nombre</th>
                 <th>Tipo</th>
@@ -52,18 +76,24 @@
                 </tr>
             @endforeach
         </tbody>
-    </table>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>
 @endsection
 
 @section('scripts')
 <script src="{{ asset('plugins/table/datatable/datatables.js') }}"></script>
 <script src="{{ asset('plugins/table/datatable/button-ext/dataTables.buttons.min.js') }}"></script>
-<script src="{{ asset('plugins/table/datatable/button-ext/jszip.min.js') }}"></script>    
+<script src="{{ asset('plugins/table/datatable/button-ext/jszip.min.js') }}"></script>
 <script src="{{ asset('plugins/table/datatable/button-ext/buttons.html5.min.js') }}"></script>
 <script src="{{ asset('plugins/table/datatable/button-ext/buttons.print.min.js') }}"></script>
 <script src="{{ asset('plugins/highlight/highlight.pack.js') }}"></script>
-<script src="{{ asset('assets/js/custom.js') }}"></script>  
+<script src="{{ asset('assets/js/custom.js') }}"></script>
 <script src="{{ asset('assets/js/scrollspyNav.js') }}"></script>
 
 <script>
@@ -89,11 +119,11 @@
         ],
         oLanguage: {
             oPaginate: {
-                sPrevious: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"></svg>',
-                sNext: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"></svg>'
+                sPrevious: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">...</svg>',
+                sNext: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">...</svg>'
             },
             sInfo: "Mostrando página _PAGE_ de _PAGES_",
-            sSearch: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"></svg>',
+            sSearch: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">...</svg>',
             sSearchPlaceholder: "Buscar...",
             sLengthMenu: "Resultados : _MENU_"
         },
