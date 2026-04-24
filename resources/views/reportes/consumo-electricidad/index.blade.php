@@ -196,10 +196,6 @@
 
             <div class="d-flex justify-content-between align-items-center">
                 <div>
-                    @include('layouts.theme.partials.breadcrumb')
-                </div>
-
-                <div>
                     <h4 class="mb-0">Reporte Consumo Electricidad</h4>
                 </div>
 

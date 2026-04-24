@@ -10,7 +10,7 @@ class CcostoController extends Controller
 {
     public function index()
     {
-        $ccostos = Ccosto::with('cfinanciero')->get();
+        $ccostos = Ccosto::with('centrofinanciero')->get();
         return view('ccostos.index', compact('ccostos'));
     }
 

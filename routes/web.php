@@ -189,3 +189,15 @@ Route::get('/reportes/consumo-electricidad', [ReporteConsumoElectricidadControll
 
 Route::get('/dashboard/electricidad/comparativo', [DashboardElectricidadComparativoController::class, 'index'])
     ->name('dashboard.electricidad.comparativo');
+
+Route::get('cdps/ajax/paridad-uf', [CdpController::class, 'obtenerParidadUf'])
+    ->name('cdps.paridad-uf');
+
+Route::get('cdps/{cdp}/documentos/{documento}/download', [CdpController::class, 'downloadDocumento'])
+    ->name('cdps.documentos.download');
+
+Route::delete('cdps/{cdp}/documentos/{documento}', [CdpController::class, 'destroyDocumento'])
+    ->name('cdps.documentos.destroy');
+
+
+Route::resource('cdps', CdpController::class)->names('cdps');

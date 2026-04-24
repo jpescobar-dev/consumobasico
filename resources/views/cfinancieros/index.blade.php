@@ -24,10 +24,7 @@
 <div class="widget-content widget-content-area br-6 mt-2 mb-2">    
     <div id="content" class="main-content">
         <div class="layout-px-spacing">
-            <div class="d-flex justify-content-between align-items-center">
-                <div>                 
-                    @include('layouts.theme.partials.breadcrumb')
-                </div>
+            <div class="d-flex justify-content-between align-items-center">               
                 <div>
                     <h4>Listado Centro Financieros</h4>
                 </div>

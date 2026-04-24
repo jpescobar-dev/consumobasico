@@ -9,87 +9,90 @@
 <link href="{{ asset('assets/css/tables/table-basic.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 
-@section('title', 'Items')
+@section('title', 'CDPs')
 @section('title2', 'Índice')
 
 @section('content')
-<div class="widget-content widget-content-area br-6 mt-2 mb-2">    
-    <div id="content" class="main-content">
-        <div class="layout-px-spacing">
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <h4>Items Presupuestarios</h4>
-                </div>
 
-                <div>
-                    <!-- Contenido derecho -->
-                    <a href="{{ route('items.create') }}" class="btn btn-outline-primary btn-sm" title="Nuevo Item">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="84" height="84" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <line x1="12" y1="8" x2="12" y2="16"></line>
-                            <line x1="8" y1="12" x2="16" y2="12"></line>
-                        </svg>    
-                    </a>
-                </div>
-            </div>  
+@include('partials.alerts')
 
-            <!-- Tabla de Documentos Tributarios -->
-            <div class="row mt-4">
-                <div class="col-xl-12">
-                    <div class="widget widget-table-one">
+<div class="widget-content widget-content-area br-6 mt-2 mb-2">
+    <div class="">
+        <a href="{{ route('cdps.create') }}" class="btn btn-primary btn-sm mt-2 mb-2">
+            <i class="fas fa-plus"></i> Nuevo CDP
+        </a>
+    </div>
+
     <table id="html5-extension" class="table table-hover table-striped" style="width:100%">
         <thead>
-            <tr>             
-                <th>Código</th>
-                <th>Nombre</th>
-                <th>Descripción</th>
+            <tr>
+                <th>ID</th>
+                <th>N° CDP</th>
+                <th>Fecha</th>
+                <th>Proceso SGF</th>
+                <th>Centro Financiero</th>
+                <th>Centro Costo</th>
+                <th>Catálogo</th>
+                <th>Proyecto</th>
+                <th>Moneda</th>
+                <th>Monto Total</th>
+                <th>Estado</th>
+                <th>Docs</th>
                 <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($items as $item)
+            @foreach ($cdps as $cdp)
                 <tr>
-                    <td>{{ $item->item }}</td>
-                    {{-- <td>{{ $item->nombre }}</td> --}}
-                     <td>{{ Str::limit($item->nombre, 100) }}</td>
-                      <td>{{ Str::limit($item->descripcion, 100) }}</td>
-                    {{-- <td>{{ $item->descripcion }}</td> --}}
+                    <td>{{ $cdp->id }}</td>
+                    <td>{{ $cdp->num_cdp }}</td>
+                    <td>{{ optional($cdp->fecha_cdp)->format('d-m-Y') }}</td>
+                    <td>{{ $cdp->proceso_sgf }}</td>
+                    <td>
+                        {{ $cdp->cfinanciero_id }}
+                        @if(optional($cdp->cfinanciero)->nombre)
+                            - {{ $cdp->cfinanciero->nombre }}
+                        @endif
+                    </td>
+                    <td>{{ $cdp->ccosto }}</td>
+                    <td>{{ $cdp->catalogo }}</td>
+                    <td>{{ optional($cdp->proyecto)->proyecto }}</td>
+                    <td>{{ $cdp->moneda }}</td>
+                    <td>{{ number_format((float) $cdp->monto_total_impto_incluido, 0, ',', '.') }}</td>
+                    <td>{{ optional($cdp->estado)->estado }}</td>
+                    <td>{{ $cdp->documentos->count() }}</td>
                     <td class="text-center">
-                        <a href="{{ route('items.show', $item) }}" class="btn btn-sm btn-outline-primary" title="Ver">
+                        <a href="{{ route('cdps.show', $cdp) }}" class="btn btn-sm btn-outline-primary" title="Ver">
                             <i class="fas fa-eye"></i>
                         </a>
-                        {{-- <a href="{{ route('items.edit', $item) }}" class="btn btn-sm btn-outline-warning" title="Editar">
+
+                        <a href="{{ route('cdps.edit', $cdp) }}" class="btn btn-sm btn-outline-warning" title="Editar">
                             <i class="fas fa-edit"></i>
-                        </a> --}}
-                        {{-- <form action="{{ route('items.destroy', $item) }}" method="POST" class="d-inline" onsubmit="return confirm('¿Está seguro de eliminar este item?');">
+                        </a>
+
+                        <form action="{{ route('cdps.destroy', $cdp) }}" method="POST" class="d-inline" onsubmit="return confirm('¿Está seguro de eliminar este CDP?');">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-sm btn-outline-danger" title="Eliminar">
                                 <i class="fas fa-trash"></i>
                             </button>
-                        </form> --}}
-                    </td>                 
+                        </form>
+                    </td>
                 </tr>
             @endforeach
-       </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
+        </tbody>
+    </table>
 </div>
 @endsection
 
 @section('scripts')
 <script src="{{ asset('plugins/table/datatable/datatables.js') }}"></script>
 <script src="{{ asset('plugins/table/datatable/button-ext/dataTables.buttons.min.js') }}"></script>
-<script src="{{ asset('plugins/table/datatable/button-ext/jszip.min.js') }}"></script>    
+<script src="{{ asset('plugins/table/datatable/button-ext/jszip.min.js') }}"></script>
 <script src="{{ asset('plugins/table/datatable/button-ext/buttons.html5.min.js') }}"></script>
 <script src="{{ asset('plugins/table/datatable/button-ext/buttons.print.min.js') }}"></script>
 <script src="{{ asset('plugins/highlight/highlight.pack.js') }}"></script>
-<script src="{{ asset('assets/js/custom.js') }}"></script>  
+<script src="{{ asset('assets/js/custom.js') }}"></script>
 <script src="{{ asset('assets/js/scrollspyNav.js') }}"></script>
 
 <script>
@@ -129,3 +132,5 @@
     });
 </script>
 @endsection
+
+

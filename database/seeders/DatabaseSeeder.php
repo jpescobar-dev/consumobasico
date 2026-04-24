@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
             ContratosSeeder::class,
             LicitacionesSeeder::class,
             OrdenescomprasSeeder::class,
-            IniciativasSeeder::class,
+            // IniciativasSeeder::class,
             ProyectosSeeder::class,
             RolesAndPermissionsSeeder::class
                      

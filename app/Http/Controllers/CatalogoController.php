@@ -10,7 +10,7 @@ class CatalogoController extends Controller
 {
     public function index()
     {
-        $catalogos = Catalogo::with('item')->get();
+        $catalogos = Catalogo::with('itemRelacion')->get();
         return view('catalogos.index', compact('catalogos'));
     }
 

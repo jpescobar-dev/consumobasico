@@ -14,9 +14,6 @@
         
         <div class="layout-px-spacing">  
              <div class="d-flex justify-content-between align-items-center">
-                <div>                 
-                    @include('layouts.theme.partials.breadcrumb')
-                </div>
                 <div>
                     <h4>Dashboard DTES</h4>
                 </div>

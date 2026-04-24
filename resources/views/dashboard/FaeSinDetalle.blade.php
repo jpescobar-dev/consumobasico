@@ -15,10 +15,6 @@
 
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <div>
-                    @include('layouts.theme.partials.breadcrumb')
-                </div>
-
-                <div>
                     <h4 class="mb-0">FAE sin detalle</h4>
                 </div>
 

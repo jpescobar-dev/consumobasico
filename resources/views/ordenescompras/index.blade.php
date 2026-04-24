@@ -25,9 +25,6 @@
 
             <div class="d-flex justify-content-between align-items-center">
                 <div>
-                    @include('layouts.theme.partials.breadcrumb')
-                </div>
-                <div>
                     <h4>Listado de Ordenes de Compras</h4>
                 </div>
                 <div>
