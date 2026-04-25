@@ -3,6 +3,10 @@
 @section('title2', 'Electricidad')
 @section('title', 'Dashboard Comparativo')
 
+@section('header_actions')
+    <a href="{{ url('/') }}" class="btn btn-outline-primary btn-sm">Volver</a>
+@endsection
+
 @section('styles')
     <style>
         .metric-card {
@@ -99,20 +103,6 @@
 <div class="widget-content widget-content-area br-6 mt-2 mb-2">
     <div id="content" class="main-content">
         <div class="layout-px-spacing">
-
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <div>
-                    @include('layouts.theme.partials.breadcrumb')
-                </div>
-
-                <div>
-                    <h4 class="mb-0">Dashboard Comparativo de Electricidad</h4>
-                </div>
-
-                <div>
-                    <a href="{{ url('/') }}" class="btn btn-outline-primary btn-sm">Volver</a>
-                </div>
-            </div>
 
             <div class="filter-card">
                 <form method="GET" action="{{ route('dashboard.electricidad.comparativo') }}">

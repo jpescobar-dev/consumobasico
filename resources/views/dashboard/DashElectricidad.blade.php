@@ -1,7 +1,11 @@
-@extends('layouts.theme.app')
+﻿@extends('layouts.theme.app')
 
 @section('title2', 'Consumo Electricidad')
 @section('title', 'Dashboard')
+
+@section('header_actions')
+    <a href="{{ url('/') }}" class="btn btn-outline-primary btn-sm" title="Volver">Volver</a>
+@endsection
 
 @section('styles')
     <link rel="stylesheet" type="text/css" href="{{ asset('plugins/table/datatable/datatables.css') }}">
@@ -65,33 +69,7 @@
     <div id="content" class="main-content">
         <div class="layout-px-spacing">
 
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <div>
-                    @include('layouts.theme.partials.breadcrumb')
-                </div>
-
-                <div>
-                    <h4 class="mb-0">Dashboard Consumo Electricidad</h4>
-                </div>
-
-                <div>
-                    <a href="{{ url('/') }}" class="btn btn-outline-primary btn-sm" title="Volver">
-                        <svg version="1.1" id="Capa_1"
-                            xmlns="http://www.w3.org/2000/svg"
-                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                            viewBox="0 0 52.502 52.502"
-                            style="enable-background:new 0 0 52.502 52.502;"
-                            xml:space="preserve" width="18" height="18">
-                            <path d="M51.718,50.857l-1.341-2.252C40.075,31.295,25.975,32.357,22.524,32.917v13.642L0,23.995L22.524,1.644v13.43
-                            c0.115,0,0.229-0.001,0.344-0.001c12.517,0,18.294,5.264,18.542,5.496c13.781,11.465,10.839,27.554,10.808,27.715L51.718,50.857z
-                            M25.505,30.735c5.799,0,16.479,1.923,24.993,14.345c0.128-4.872-0.896-15.095-10.41-23.012c-0.099-0.088-5.935-5.364-18.533-4.975
-                            l-1.03,0.03V6.447L2.832,24.001l17.692,17.724V31.311l0.76-0.188C21.338,31.109,22.947,30.735,25.505,30.735z"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-
-            {{-- Métricas --}}
+            {{-- MÃ©tricas --}}
             <div class="row layout-top-spacing">
                 <div class="col-xl-3 col-md-6 col-sm-6 mb-3">
                     <div class="metric-card">
@@ -116,17 +94,17 @@
 
                 <div class="col-xl-3 col-md-6 col-sm-6 mb-3">
                     <div class="metric-card">
-                        <div class="metric-label">Períodos analizados</div>
+                        <div class="metric-label">PerÃ­odos analizados</div>
                         <h3 class="metric-value">{{ number_format($metricasDashboard['cantidad_periodos'] ?? 0, 0, ',', '.') }}</h3>
                     </div>
                 </div>
             </div>
 
-            {{-- Gráfico principal --}}
+            {{-- GrÃ¡fico principal --}}
             <div class="row">
                 <div class="col-xl-12 mb-4">
                     <div class="chart-card">
-                        <h5>Consumo mensual por período</h5>
+                        <h5>Consumo mensual por perÃ­odo</h5>
                         <div class="chart-wrapper">
                             <canvas id="chartConsumoPeriodo"></canvas>
                         </div>
@@ -134,7 +112,7 @@
                 </div>
             </div>
 
-            {{-- Gráficos secundarios --}}
+            {{-- GrÃ¡ficos secundarios --}}
             <div class="row">
                 <div class="col-xl-4 col-md-6 mb-4">
                     <div class="chart-card">
@@ -184,7 +162,7 @@
                                 <thead>
                                     <tr>
                                         <th style="font-weight: bold; font-size: 0.8em;">ID</th>
-                                        <th style="font-weight: bold; font-size: 0.8em;">Número</th>
+                                        <th style="font-weight: bold; font-size: 0.8em;">NÃºmero</th>
                                         <th style="font-weight: bold; font-size: 0.8em;">Fecha</th>
                                         <th style="font-weight: bold; font-size: 0.8em;">Periodo</th>
                                         <th style="font-weight: bold; font-size: 0.8em;">Monto</th>

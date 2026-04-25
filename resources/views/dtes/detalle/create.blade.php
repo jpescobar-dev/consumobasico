@@ -4,7 +4,6 @@
 @section('title2', 'Crear Detalle')
 
 @section('content')
-@include('layouts.theme.partials.breadcrumb', ['titulo' => 'Crear Detalle DTE'])
 
 <div class="container mt-4">
     <form action="{{ route('dtes.detalle.store', $dte->id) }}" method="POST">

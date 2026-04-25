@@ -3,6 +3,10 @@
 @section('title', 'Licitaciones')
 @section('title2', 'Ver Detalle')
 
+@section('header_actions')
+    <a href="{{ route('licitaciones.index') }}" class="btn btn-outline-warning btn-sm">Volver</a>
+@endsection
+
 @section('content')
 
 <div class="widget-content widget-content-area br-6 mt-2 mb-2">

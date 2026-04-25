@@ -1,7 +1,9 @@
 @extends('layouts.theme.app')
 
+@section('title', 'Clientes Medidores')
+@section('title2', 'Editar')
+
 @section('content')
-    @include('layouts.theme.partials.breadcrumb')
 
     <div class="container">
         <form action="{{ route('clientesmedidores.update', $clientemedidor) }}" method="POST">

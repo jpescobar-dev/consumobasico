@@ -9,7 +9,25 @@ class ClientesMedidoresSeeder extends Seeder
 {
     public function run(): void
     {
-        DB::table('clientesmedidores')->insert([
+        $ccostoPorCliente = [
+            '10122596' => '1400010201', // CAPJ Coyhaique
+            '10123101' => '1400010201', // CAPJ Coyhaique
+            '10127837' => '1400020301', // Corte de Apelaciones de Coyhaique
+            '10127838' => '1400020301', // Corte de Apelaciones de Coyhaique
+            '10101388' => '1400020401', // Primer Juzgado de Letras de Coyhaique
+            '10101389' => '1400020401', // Primer Juzgado de Letras de Coyhaique
+            '10126102' => '1400020401', // Primer Juzgado de Letras de Coyhaique
+            '10129956' => '1400020401', // Primer Juzgado de Letras de Coyhaique
+            '10138053' => '1400020601', // Juzgado de Letras, Garantia y Familia de Chile Chico
+            '10115714' => '1400020601', // Juzgado de Letras, Garantia y Familia de Chile Chico
+            '10117895' => '1400020602', // Juzgado de Letras, Garantia y Familia Pto. Cisnes
+            '10105641' => '1400020603', // Juzgado de Letras, Garantia y Familia de Cochrane
+            '10117896' => '1400020603', // Juzgado de Letras, Garantia y Familia de Cochrane
+            '10115704' => '1471031301', // Letras, Garantia y Familia Aysen
+            '10135754' => '1471031301', // Letras, Garantia y Familia Aysen
+        ];
+
+        $clientesMedidores = [
 [
         'numerocliente' => '10122596',
         'medidor' => 'ELECTRICIDAD',
@@ -366,6 +384,25 @@ class ClientesMedidoresSeeder extends Seeder
     ],
 
 
-        ]);
+        ];
+
+        $clientesMedidores = array_map(function (array $cliente) use ($ccostoPorCliente) {
+            $cliente['ccosto'] = $ccostoPorCliente[$cliente['numerocliente']] ?? (string) $cliente['ccosto'];
+            return $cliente;
+        }, $clientesMedidores);
+
+        foreach ($clientesMedidores as $cliente) {
+            DB::table('clientesmedidores')->updateOrInsert(
+                ['numerocliente' => $cliente['numerocliente']],
+                [
+                    'medidor' => $cliente['medidor'],
+                    'rutproveedor' => $cliente['rutproveedor'],
+                    'ccosto' => $cliente['ccosto'],
+                    'tarifa' => $cliente['tarifa'],
+                    'tipo' => $cliente['tipo'],
+                    'vigente' => $cliente['vigente'],
+                ]
+            );
+        }
     }
 }

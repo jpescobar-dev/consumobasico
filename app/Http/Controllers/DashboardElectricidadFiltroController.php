@@ -12,7 +12,7 @@ class DashboardElectricidadFiltroController extends Controller
     {
         $rutEmisor = '88272600-2';
         $periodo = $request->get('periodo');
-        $cfinanciero = $request->get('cfinanciero');
+        $ccosto = $request->get('ccosto');
 
         $periodoExpr = "TRIM(COALESCE(NULLIF(d.Periodo, ''), DATE_FORMAT(d.FechaRecepcionSII, '%m/%Y')))";
         $anioExpr = "CAST(SUBSTRING_INDEX({$periodoExpr}, '/', -1) AS UNSIGNED)";
@@ -28,15 +28,14 @@ class DashboardElectricidadFiltroController extends Controller
             })
             ->where('d.RutEmisor', $rutEmisor);
 
-        if ($cfinanciero) {
-            $periodosDisponiblesQuery->whereExists(function ($q) use ($cfinanciero) {
+        if ($ccosto) {
+            $periodosDisponiblesQuery->whereExists(function ($q) use ($ccosto) {
                 $q->select(DB::raw(1))
                     ->from('detalle_consumos_basicos as det')
                     ->join('clientesmedidores as cm', 'det.numerocliente', '=', 'cm.numerocliente')
                     ->join('ccostos as cc', 'cm.ccosto', '=', 'cc.ccosto')
-                    ->join('cfinancieros as cf', 'cc.cfinanciero', '=', 'cf.cfinanciero')
                     ->whereColumn('det.dtes_id', 'd.id')
-                    ->where('cf.cfinanciero', $cfinanciero);
+                    ->where('cc.ccosto', $ccosto);
             });
         }
 
@@ -46,21 +45,20 @@ class DashboardElectricidadFiltroController extends Controller
             ->orderByDesc('periodo')
             ->pluck('periodo');
 
-        $centrosFinancierosDisponiblesQuery = DB::table('dtes as d')
+        $centrosCostosDisponiblesQuery = DB::table('dtes as d')
             ->join('detalle_consumos_basicos as det', 'd.id', '=', 'det.dtes_id')
             ->join('clientesmedidores as cm', 'det.numerocliente', '=', 'cm.numerocliente')
             ->join('ccostos as cc', 'cm.ccosto', '=', 'cc.ccosto')
-            ->join('cfinancieros as cf', 'cc.cfinanciero', '=', 'cf.cfinanciero')
             ->where('d.RutEmisor', $rutEmisor);
 
         if ($periodo) {
-            $centrosFinancierosDisponiblesQuery->whereRaw("{$anioExpr} = ?", [$periodo]);
+            $centrosCostosDisponiblesQuery->whereRaw("{$anioExpr} = ?", [$periodo]);
         }
 
-        $centrosFinancierosDisponibles = $centrosFinancierosDisponiblesQuery
-            ->select('cf.cfinanciero', 'cf.nombre')
+        $centrosCostosDisponibles = $centrosCostosDisponiblesQuery
+            ->select('cc.ccosto', 'cc.nombre')
             ->distinct()
-            ->orderBy('cf.nombre')
+            ->orderBy('cc.nombre')
             ->get();
 
         $baseDtesFiltrados = DB::table('dtes as d')
@@ -73,15 +71,14 @@ class DashboardElectricidadFiltroController extends Controller
             $baseDtesFiltrados->whereRaw("{$anioExpr} = ?", [$periodo]);
         }
 
-        if ($cfinanciero) {
-            $baseDtesFiltrados->whereExists(function ($q) use ($cfinanciero) {
+        if ($ccosto) {
+            $baseDtesFiltrados->whereExists(function ($q) use ($ccosto) {
                 $q->select(DB::raw(1))
                     ->from('detalle_consumos_basicos as det')
                     ->join('clientesmedidores as cm', 'det.numerocliente', '=', 'cm.numerocliente')
                     ->join('ccostos as cc', 'cm.ccosto', '=', 'cc.ccosto')
-                    ->join('cfinancieros as cf', 'cc.cfinanciero', '=', 'cf.cfinanciero')
                     ->whereColumn('det.dtes_id', 'd.id')
-                    ->where('cf.cfinanciero', $cfinanciero);
+                    ->where('cc.ccosto', $ccosto);
             });
         }
 
@@ -158,10 +155,6 @@ class DashboardElectricidadFiltroController extends Controller
             $asignacionCfBase->whereRaw("{$anioExpr} = ?", [$periodo]);
         }
 
-        if ($cfinanciero) {
-            $asignacionCfBase->where('pcf.cfinanciero', $cfinanciero);
-        }
-
         $asignacionCf = DB::query()->fromSub($asignacionCfBase, 'acf');
 
         $consumoPorCcostoYDte = DB::table('detalle_consumos_basicos as det')
@@ -212,22 +205,22 @@ class DashboardElectricidadFiltroController extends Controller
             $asignacionCcBase->whereRaw("{$anioExpr} = ?", [$periodo]);
         }
 
-        if ($cfinanciero) {
-            $asignacionCcBase->where('pcc.cfinanciero', $cfinanciero);
+        if ($ccosto) {
+            $asignacionCcBase->where('pcc.ccosto', $ccosto);
         }
 
         $asignacionCc = DB::query()->fromSub($asignacionCcBase, 'acc');
 
-        if ($cfinanciero) {
-            $graficoConsumoPeriodo = (clone $asignacionCf)
+        if ($ccosto) {
+            $graficoConsumoPeriodo = (clone $asignacionCc)
                 ->select(
-                    'acf.periodo_consumo',
-                    DB::raw('MIN(acf.fecha_orden) as fecha_orden'),
-                    DB::raw('COUNT(DISTINCT acf.dte_id) as cantidad_documentos'),
-                    DB::raw('SUM(acf.monto_prorrateado) as total_pesos'),
-                    DB::raw('SUM(acf.consumo_kw) as total_kw')
+                    'acc.periodo_consumo',
+                    DB::raw('MIN(acc.fecha_orden) as fecha_orden'),
+                    DB::raw('COUNT(DISTINCT acc.dte_id) as cantidad_documentos'),
+                    DB::raw('SUM(acc.monto_prorrateado) as total_pesos'),
+                    DB::raw('SUM(acc.consumo_kw) as total_kw')
                 )
-                ->groupBy('acf.periodo_consumo')
+                ->groupBy('acc.periodo_consumo')
                 ->orderBy('fecha_orden')
                 ->get();
         } else {
@@ -261,10 +254,10 @@ class DashboardElectricidadFiltroController extends Controller
         $chartMontoMensual = $graficoConsumoPeriodo->pluck('total_pesos')->map(fn ($v) => (float) $v)->values();
         $chartConsumoKw = $graficoConsumoPeriodo->pluck('total_kw')->map(fn ($v) => (float) $v)->values();
 
-        if ($cfinanciero) {
-            $totalDtes = (clone $asignacionCf)->distinct()->count('acf.dte_id');
-            $totalMontoDashboard = (clone $asignacionCf)->sum('acf.monto_prorrateado');
-            $totalConsumoDashboard = (clone $asignacionCf)->sum('acf.consumo_kw');
+        if ($ccosto) {
+            $totalDtes = (clone $asignacionCc)->distinct()->count('acc.dte_id');
+            $totalMontoDashboard = (clone $asignacionCc)->sum('acc.monto_prorrateado');
+            $totalConsumoDashboard = (clone $asignacionCc)->sum('acc.consumo_kw');
         } else {
             $totalDtes = (clone $baseDtesFiltrados)->count('d.id');
             $totalMontoDashboard = (clone $baseDtesFiltrados)->sum('d.Monto');
@@ -300,8 +293,8 @@ class DashboardElectricidadFiltroController extends Controller
             ->where('d.RutEmisor', $rutEmisor)
             ->whereIn('d.id', clone $dtesIdsFiltradosSub);
 
-        if ($cfinanciero) {
-            $detalleFiltradoBase->where('cf.cfinanciero', $cfinanciero);
+        if ($ccosto) {
+            $detalleFiltradoBase->where('cc.ccosto', $ccosto);
         }
 
         $consumoPorTipoConsumo = (clone $detalleFiltradoBase)
@@ -404,16 +397,16 @@ class DashboardElectricidadFiltroController extends Controller
             }
         }
 
-        $consumoxCF = (clone $asignacionCf)
+        $consumoxCF = (clone $asignacionCc)
             ->select(
-                'acf.cfinanciero',
-                'acf.nombre_cfinanciero',
-                DB::raw('SUM(acf.monto_prorrateado) as total_monto'),
-                DB::raw('SUM(acf.consumo_kw) as total_consumo'),
-                DB::raw('COUNT(DISTINCT acf.dte_id) as cantidad_documentos')
+                'acc.cfinanciero',
+                'acc.nombre_cfinanciero',
+                DB::raw('SUM(acc.monto_prorrateado) as total_monto'),
+                DB::raw('SUM(acc.consumo_kw) as total_consumo'),
+                DB::raw('COUNT(DISTINCT acc.dte_id) as cantidad_documentos')
             )
-            ->groupBy('acf.cfinanciero', 'acf.nombre_cfinanciero')
-            ->orderBy('acf.nombre_cfinanciero')
+            ->groupBy('acc.cfinanciero', 'acc.nombre_cfinanciero')
+            ->orderBy('acc.nombre_cfinanciero')
             ->get();
 
         $topCentroCosto = 10;
@@ -548,8 +541,8 @@ class DashboardElectricidadFiltroController extends Controller
             ->where('d.RutEmisor', $rutEmisor)
             ->whereIn('d.id', clone $dtesIdsFiltradosSub);
 
-        if ($cfinanciero) {
-            $dtesConDetalles->where('cf.cfinanciero', $cfinanciero);
+        if ($ccosto) {
+            $dtesConDetalles->where('cc.ccosto', $ccosto);
         }
 
         $dtesConDetalles = $dtesConDetalles
@@ -574,9 +567,9 @@ class DashboardElectricidadFiltroController extends Controller
 
         return view('dashboard.DashElectricidadFiltro', compact(
             'periodo',
-            'cfinanciero',
+            'ccosto',
             'periodosDisponibles',
-            'centrosFinancierosDisponibles',
+            'centrosCostosDisponibles',
             'documentosPorTipo',
             'consumoxCF',
             'consumoPorTipoConsumo',

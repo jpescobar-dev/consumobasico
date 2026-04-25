@@ -39,7 +39,7 @@
         .page-header {
             display: flex;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: space-between;
             gap: 10px;
             padding: 0;
             margin: 30px 0 16px;
@@ -66,6 +66,7 @@
             display: flex;
             align-items: center;
             margin: 0;
+            justify-content: flex-end;
         }
 
         .breadcrumb-one .breadcrumb {
@@ -101,6 +102,40 @@
             font-size: 0;
             content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 24 24" fill="none" stroke="%23555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>');
             padding: 0 6px;
+        }
+
+        .page-heading {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            width: 100%;
+            text-align: right;
+        }
+
+        .page-heading-title {
+            margin: 0 0 6px;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #3b3f5c;
+            line-height: 1.2;
+        }
+
+        .page-header-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: 12px;
+            flex-shrink: 0;
+        }
+
+        .layout-px-spacing > .d-flex.justify-content-between.align-items-center,
+        .layout-px-spacing > .d-flex.justify-content-between.align-items-center.mb-3 {
+            justify-content: flex-end !important;
+        }
+
+        .layout-px-spacing > .d-flex.justify-content-between.align-items-center > div:not(:last-child),
+        .layout-px-spacing > .d-flex.justify-content-between.align-items-center.mb-3 > div:not(:last-child) {
+            display: none;
         }
 
         .alert-layout {
@@ -203,7 +238,27 @@
 
         <div id="content" class="content">
             <div class="layout-px-spacing">
-                @include('layouts.theme.partials.breadcrumb')
+                @hasSection('title')
+                    <div class="page-header">
+                        <div class="page-heading">
+                            <h1 class="page-heading-title">
+                                @hasSection('title2')
+                                    @yield('title2')
+                                @else
+                                    @yield('title')
+                                @endif
+                            </h1>
+
+                            @include('layouts.theme.partials.breadcrumb')
+                        </div>
+
+                        @hasSection('header_actions')
+                            <div class="page-header-actions">
+                                @yield('header_actions')
+                            </div>
+                        @endif
+                    </div>
+                @endif
 
                 @if (session('success'))
                     <div class="alert alert-success alert-layout" role="alert">

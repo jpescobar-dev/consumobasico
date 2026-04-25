@@ -1,7 +1,9 @@
 @extends('layouts.theme.app')
 
+@section('title', 'Excel')
+@section('title2', 'Importar')
+
 @section('content')
-    @include('layouts.theme.partials.breadcrumb', ['breadcrumb' => 'Importar Excel'])
 
     <div class="container-fluid">
         <div class="row">

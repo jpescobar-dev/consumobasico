@@ -2,6 +2,9 @@
 
 @section('title', 'Licitaciones')
 @section('title2', 'Nueva Licitacion')
+@section('header_actions')
+    <a href="{{ route('licitaciones.index') }}" class="btn btn-outline-warning btn-sm">Volver</a>
+@endsection
 
 @section('content')
 

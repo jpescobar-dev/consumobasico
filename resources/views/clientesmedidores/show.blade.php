@@ -1,7 +1,9 @@
 @extends('layouts.theme.app')
 
+@section('title', 'Clientes Medidores')
+@section('title2', 'Detalle')
+
 @section('content')
-@include('layouts.theme.partials.breadcrumb', ['titulo' => 'Detalle Cliente Medidor'])
 
 <div class="container">
     <table class="table table-bordered">

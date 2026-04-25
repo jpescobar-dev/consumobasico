@@ -1,7 +1,9 @@
 @extends('layouts.theme.app')
 
+@section('title', 'Clientes Medidores')
+@section('title2', 'Crear')
+
 @section('content')
-@include('layouts.theme.partials.breadcrumb', ['titulo' => 'Crear Cliente Medidor'])
 
 <div class="container">
     <form action="{{ route('clientesmedidores.store') }}" method="POST">

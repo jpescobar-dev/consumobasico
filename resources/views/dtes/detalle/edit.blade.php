@@ -4,7 +4,6 @@
 @section('title2', 'Editar Detalle')
 
 @section('content')
-@include('layouts.theme.partials.breadcrumb', ['titulo' => 'Editar Detalle DTE'])
 
 <div class="container mt-4">
     <form action="{{ route('dtes.detalle.update', $dte->id) }}" method="POST">
