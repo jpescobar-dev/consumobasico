@@ -212,6 +212,58 @@
             margin-right: 12px;
         }
 
+
+        /* CAPJ responsive compact layout */
+        html, body { max-width: 100%; overflow-x: hidden; }
+        body { font-size: 13px; }
+        .header-container, .main-container, #content, .content, .layout-px-spacing { max-width: 100%; }
+        .layout-px-spacing { padding: 0 24px !important; min-height: calc(100vh - 150px) !important; }
+        .header.navbar { min-height: 58px; padding: 8px 24px; }
+        .header.navbar .navbar-brand-name { font-size: 17px; font-weight: 700; letter-spacing: .2px; color: #07111f; }
+        .header.navbar .nav-link { padding: 6px 8px !important; }
+        .header.navbar svg { width: 20px; height: 20px; }
+        .header.navbar .user-profile-dropdown .media img { width: 34px; height: 34px; }
+        .header.navbar .user-profile-dropdown .media-body h6 { font-size: 13px; line-height: 1.1; max-width: 170px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .topnavbar { width: calc(100% - 64px); margin: 0 32px; padding: 0 14px; min-height: 48px; background: #11152f; border-radius: 8px; box-shadow: 0 10px 24px rgba(15, 23, 42, .08); }
+        .topnavbar .navbar-collapse { min-width: 0; }
+        .topnavbar-nav { width: 100%; display: flex; align-items: center; flex-wrap: nowrap; min-width: 0; }
+        .topnavbar-item { min-width: 0; flex: 0 1 auto; border-right: 1px solid rgba(255,255,255,.16); }
+        .topnavbar-item:last-child { border-right: 0; }
+        .topnavbar-link { display: flex !important; align-items: center; gap: 8px; min-width: 0; padding: 12px 16px !important; color: #ffffff !important; font-size: 13px; font-weight: 600; line-height: 1; white-space: nowrap; }
+        .topnavbar-icon { font-size: 18px; width: 20px; text-align: center; opacity: .9; flex: 0 0 auto; }
+        .topnavbar-text { overflow: hidden; text-overflow: ellipsis; }
+        .topnavbar-item.active .topnavbar-link, .topnavbar-link:hover, .topnavbar-link:focus { background: rgba(255,255,255,.08); color: #ffffff !important; }
+        .topnavbar-toggler { color: #fff; border: 1px solid rgba(255,255,255,.22); padding: 6px 10px; font-size: 13px; border-radius: 7px; }
+        .topnavbar-toggler span { margin-left: 6px; }
+        .page-header { gap: 8px; margin: 18px 0 12px; }
+        .page-heading-title { margin: 0 0 4px; font-size: 1.32rem; letter-spacing: .2px; }
+        .breadcrumb-one .breadcrumb { font-size: 12px; line-height: 1.2; }
+        .breadcrumb-one .breadcrumb-item + .breadcrumb-item::before { padding: 0 4px; transform: scale(.82); }
+        .page-header-actions .btn, .btn { font-size: 12px; padding: 7px 13px; line-height: 1.2; }
+        .widget, .card, .statbox, .layout-px-spacing > .widget, .layout-px-spacing > .card { max-width: 100%; }
+        @media (max-width: 1199.98px) {
+            .topnavbar { width: calc(100% - 32px); margin: 0 16px; padding: 7px 10px; }
+            .topnavbar-nav { flex-wrap: wrap; gap: 4px; }
+            .topnavbar-item { border-right: 0; }
+            .topnavbar-link { padding: 9px 11px !important; font-size: 12px; border-radius: 6px; }
+            .topnavbar-icon { font-size: 15px; width: 16px; }
+        }
+        @media (max-width: 991.98px) {
+            .header.navbar { padding: 8px 14px; }
+            .topnavbar { border-radius: 0; margin: 0; width: 100%; }
+            .topnavbar-nav { align-items: stretch; gap: 2px; padding-top: 6px; }
+            .topnavbar-item { width: 100%; }
+            .topnavbar-link { width: 100%; justify-content: flex-start; }
+            .layout-px-spacing { padding: 0 14px !important; }
+            .page-header { align-items: flex-start; flex-direction: column; }
+            .page-heading { align-items: flex-start; text-align: left; }
+            .page-header-actions { margin-left: 0; }
+        }
+        @media (max-width: 767.98px) {
+            .header.navbar .user-profile-dropdown .media-body { display: none; }
+            .page-heading-title { font-size: 1.12rem; }
+            .breadcrumb-one .breadcrumb { font-size: 11px; justify-content: flex-start !important; }
+        }
         @media (max-width: 575px) {
             .page-header {
                 gap: 8px;
